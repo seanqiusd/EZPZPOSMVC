@@ -54,12 +54,39 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Guest.cs" />
     <Compile Include="IdentityModels.cs" />
+    <Compile Include="MenuItem.cs" />
+    <Compile Include="Migrations\202009281414456_InitialCreate.cs" />
+    <Compile Include="Migrations\202009281414456_InitialCreate.Designer.cs">
+      <DependentUpon>202009281414456_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009281911531_DataLayerMigrationWithApplicationUserBuiltOutMore.cs" />
+    <Compile Include="Migrations\202009281911531_DataLayerMigrationWithApplicationUserBuiltOutMore.Designer.cs">
+      <DependentUpon>202009281911531_DataLayerMigrationWithApplicationUserBuiltOutMore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009281919151_DbSetsAddedForGustsandOrder.cs" />
+    <Compile Include="Migrations\202009281919151_DbSetsAddedForGustsandOrder.Designer.cs">
+      <DependentUpon>202009281919151_DbSetsAddedForGustsandOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Order.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202009281414456_InitialCreate.resx">
+      <DependentUpon>202009281414456_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009281911531_DataLayerMigrationWithApplicationUserBuiltOutMore.resx">
+      <DependentUpon>202009281911531_DataLayerMigrationWithApplicationUserBuiltOutMore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009281919151_DbSetsAddedForGustsandOrder.resx">
+      <DependentUpon>202009281919151_DbSetsAddedForGustsandOrder.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
