@@ -8,13 +8,10 @@ using System.Threading.Tasks;
 
 namespace EZPZPOS.Models.GuestModels
 {
-    public class GuestListItem
+    public class GuestEdit
     {
         [Display(Name = "Guest ID")]
         public int GuestId { get; set; }
-
-        [Display(Name = "Server ID")]
-        public string ServerId { get; set; }
 
         [Display(Name = "Guest First Name")]
         public string FirstName { get; set; }
@@ -26,22 +23,7 @@ namespace EZPZPOS.Models.GuestModels
         [Display(Name = "Phone Number")]
         public string ContactNumber { get; set; }
 
-        [Display(Name = "First Visit")]
-        public bool FirstTime
-        {
-            get
-            {
-                Order order = new Order();
-                if (GuestId == order.GuestId)
-                {
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }
-            }
-        }
+        public string Notes { get; set; }
 
 
     }

@@ -88,6 +88,25 @@ namespace EZPZPOS.Services
             }
         }
 
+        // Update -- Guest
+        public bool UpdateGuest(GuestEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Guests
+                        .Single(e => e.GuestId == model.GuestId && e.ServerId == _userId);
+
+                entity.FirstName = model.FirstName;
+                entity.LastName = model.LastName;
+                entity.ContactNumber = model.ContactNumber;
+                entity.Notes = model.Notes;
+       
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
 
 
     }

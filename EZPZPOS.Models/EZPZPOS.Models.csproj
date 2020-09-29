@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="GuestModels\GuestCreate.cs" />
     <Compile Include="GuestModels\GuestDetail.cs" />
+    <Compile Include="GuestModels\GuestEdit.cs" />
     <Compile Include="GuestModels\GuestListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

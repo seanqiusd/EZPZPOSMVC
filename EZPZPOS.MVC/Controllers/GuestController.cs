@@ -59,6 +59,25 @@ namespace EZPZPOS.MVC.Controllers
             return View(model);
         }
 
+        // GET: Guest/Edit/{id} aka Update
+        public ActionResult Edit(int id)
+        {
+            var service = CreateGuestService();
+            var detail = service.GetGuestById(id);
+            var model =
+                new GuestEdit
+                {
+                    GuestId = detail.GuestId,
+                    FirstName = detail.FirstName,
+                    LastName= detail.LastName,
+                    ContactNumber = detail.ContactNumber,
+                    Notes = detail.Notes,
+                };
+            return View(model);
+        }
+
+
+
 
         private GuestService CreateGuestService()
         {
