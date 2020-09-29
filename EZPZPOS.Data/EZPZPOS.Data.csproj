@@ -69,6 +69,10 @@
     <Compile Include="Migrations\202009281919151_DbSetsAddedForGustsandOrder.Designer.cs">
       <DependentUpon>202009281919151_DbSetsAddedForGustsandOrder.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009291405048_GuestDataPhoneNumberRequiredAttributeRemoved.cs" />
+    <Compile Include="Migrations\202009291405048_GuestDataPhoneNumberRequiredAttributeRemoved.Designer.cs">
+      <DependentUpon>202009291405048_GuestDataPhoneNumberRequiredAttributeRemoved.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -86,6 +90,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009281919151_DbSetsAddedForGustsandOrder.resx">
       <DependentUpon>202009281919151_DbSetsAddedForGustsandOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009291405048_GuestDataPhoneNumberRequiredAttributeRemoved.resx">
+      <DependentUpon>202009291405048_GuestDataPhoneNumberRequiredAttributeRemoved.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

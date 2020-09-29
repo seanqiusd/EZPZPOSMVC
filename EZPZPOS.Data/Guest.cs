@@ -21,7 +21,6 @@ namespace EZPZPOS.Data
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
-        [Required]
         [DataType(DataType.PhoneNumber)]
         [Display(Name ="Phone Number")]
         public string ContactNumber { get; set; }
