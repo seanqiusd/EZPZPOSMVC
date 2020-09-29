@@ -107,6 +107,21 @@ namespace EZPZPOS.Services
             }
         }
 
+        // Delete -- Guest
+        public bool DeleteGuest(int guestId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Guests
+                        .Single(e => e.GuestId == guestId && e.ServerId == _userId);
+
+                ctx.Guests.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
 
 
     }

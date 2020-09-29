@@ -76,8 +76,56 @@ namespace EZPZPOS.MVC.Controllers
             return View(model);
         }
 
+        // POST: Guest/Edit/{id}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, GuestEdit model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            if (model.GuestId != id)
+            {
+                ModelState.AddModelError("", "Guest Id Mismatch");
+                return View(model);
+            }
+
+            var service = CreateGuestService();
+
+            if (service.UpdateGuest(model))
+            {
+                TempData["SaveResult"] = "Your Guest Was Updated.";
+                return RedirectToAction("Index");
+            }
+
+            ModelState.AddModelError("", "Your Guest Could Not Be Updated.");
+            return View(model);
+        }
 
 
+        // GET: Guest/Delete/{id}
+        [ActionName("Delete")]
+        public ActionResult Delete(int id)
+        {
+            var svc = CreateGuestService();
+            var model = svc.GetGuestById(id);
+
+            return View(model);
+        }
+
+        // POST: Guest/Delete/{id}
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletePost(int id)
+        {
+            var service = CreateGuestService();
+
+            service.DeleteGuest(id);
+
+            TempData["SaveResult"] = "Your Guest Was Deleted";
+
+            return RedirectToAction("Index");
+        }
 
         private GuestService CreateGuestService()
         {
