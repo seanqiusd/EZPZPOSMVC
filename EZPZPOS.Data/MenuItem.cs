@@ -48,9 +48,7 @@ namespace EZPZPOS.Data
                     return false;
                 }
             }
-            set
-            {
-            }
+            
         }
 
 
