@@ -50,6 +50,16 @@ namespace EZPZPOS.MVC.Controllers
 
         }
 
+        // GET: Guest/Details/{id}
+        public ActionResult Details(int id)
+        {
+            var svc = CreateGuestService();
+            var model = svc.GetGuestById(id);
+
+            return View(model);
+        }
+
+
         private GuestService CreateGuestService()
         {
             var userId = User.Identity.GetUserId();

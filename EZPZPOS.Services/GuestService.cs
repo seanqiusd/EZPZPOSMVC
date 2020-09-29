@@ -3,6 +3,7 @@ using EZPZPOS.Models.GuestModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,7 +18,7 @@ namespace EZPZPOS.Services
             _userId = userId;
         }
 
-        // POST -- Create
+        // POST -- Create Guest
         public bool CreateGuest(GuestCreate model)
         {
             var entity =
@@ -39,7 +40,7 @@ namespace EZPZPOS.Services
             }
         }
 
-        // GET -- All
+        // GET -- All Guests
         public IEnumerable<GuestListItem> GetGuests()
         {
             using (var ctx = new ApplicationDbContext())
@@ -62,6 +63,28 @@ namespace EZPZPOS.Services
                         );
 
                 return query.ToArray();
+            }
+        }
+
+        // GET -- Guests by ID
+        public GuestDetail GetGuestById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Guests
+                        .Single(e => e.GuestId == id && e.ServerId == _userId);
+                return
+                    new GuestDetail
+                    {
+                        GuestId = entity.GuestId,
+                        FirstName = entity.FirstName,
+                        LastName = entity.LastName,
+                        ContactNumber = entity.ContactNumber,
+                        Notes = entity.Notes,
+                        LastVisitUtc = entity.LastVisitUtc
+                    };
             }
         }
 
