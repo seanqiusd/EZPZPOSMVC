@@ -42,7 +42,7 @@ namespace EZPZPOS.Data
         {
             get
             {
-                decimal taxRate = 0.09m;
+                decimal taxRate = 0.07m;
                 return taxRate;
             }
         }
