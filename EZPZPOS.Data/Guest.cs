@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Runtime.ExceptionServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,9 +15,9 @@ namespace EZPZPOS.Data
         [Key]
         public int GuestId { get; set; }
 
-        [ForeignKey(nameof(UserId))]
+        [ForeignKey(nameof(User))]
         public string ServerId { get; set; }
-        public virtual ApplicationUser UserId { get; set; }
+        public virtual ApplicationUser User { get; set; }
 
         public string FirstName { get; set; }
         public string LastName { get; set; }

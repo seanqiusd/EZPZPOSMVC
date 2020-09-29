@@ -66,5 +66,11 @@
     <Folder Include="MenuItemModels\" />
     <Folder Include="OrderModels\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EZPZPOS.Data\EZPZPOS.Data.csproj">
+      <Project>{2A0EF872-1A30-45B5-AC9C-635F3C94F445}</Project>
+      <Name>EZPZPOS.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

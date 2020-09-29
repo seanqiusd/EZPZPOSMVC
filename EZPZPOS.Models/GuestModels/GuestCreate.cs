@@ -9,14 +9,13 @@ namespace EZPZPOS.Models.GuestModels
 {
     public class GuestCreate
     {
-        [Required]
         [Display(Name ="Guest First Name")]
         public string FirstName { get; set; }
 
-        [Required]
         [Display(Name = "Guest Last Name")]
         public string LastName { get; set; }
 
+        [DataType(DataType.PhoneNumber)]
         [Display(Name = "Phone Number")]
         public string ContactNumber { get; set; }
 
@@ -24,9 +23,6 @@ namespace EZPZPOS.Models.GuestModels
         public string FullAddress { get; set; }
 
         public string Notes { get; set; }
-
-
-
 
     }
 }

@@ -54,11 +54,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GuestService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EZPZPOS.Data\EZPZPOS.Data.csproj">
+      <Project>{2a0ef872-1a30-45b5-ac9c-635f3c94f445}</Project>
+      <Name>EZPZPOS.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EZPZPOS.Models\EZPZPOS.Models.csproj">
+      <Project>{b1e963a1-d577-4158-8d28-0f9aa4bb9daa}</Project>
+      <Name>EZPZPOS.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
