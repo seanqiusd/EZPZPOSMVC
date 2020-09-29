@@ -66,9 +66,9 @@
                 @Html.DisplayFor(modelItem => item.FirstTime)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Edit Guest", "Edit", new { id = item.GuestId }) |
+                @Html.ActionLink("Guest Details", "Details", new { id = item.GuestId }) |
+                @Html.ActionLink("Delete Guest", "Delete", new { id = item.GuestId })
             </td>
         </tr>
     }
