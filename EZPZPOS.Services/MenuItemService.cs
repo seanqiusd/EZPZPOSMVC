@@ -84,6 +84,27 @@ namespace EZPZPOS.Services
             }
         }
 
+        // Update -- Menu Item
+        public bool UpdateMenuItem(MenuItemEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .MenuItems
+                        .Single(e => e.MenuItemId == model.MenuItemId);
+
+                entity.Name = model.Name;
+                entity.Description = model.Description;
+                entity.Category =model.Category;
+                entity.Price = model.Price;
+                entity.ServingsInStock = model.ServingsInStock;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+
 
     }
 }

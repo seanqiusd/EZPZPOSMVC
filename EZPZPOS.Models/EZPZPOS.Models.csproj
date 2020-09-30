@@ -60,6 +60,7 @@
     <Compile Include="GuestModels\GuestListItem.cs" />
     <Compile Include="MenuItemModels\MenuItemCreate.cs" />
     <Compile Include="MenuItemModels\MenuItemDetail.cs" />
+    <Compile Include="MenuItemModels\MenuItemEdit.cs" />
     <Compile Include="MenuItemModels\MenuItemListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -56,6 +56,23 @@ namespace EZPZPOS.MVC.Controllers
             return View(model);
         }
 
+        // GET: MenuItem/Edit/{id} aka Update
+        public ActionResult Edit(int id)
+        {
+            var service = CreateMenuItemService();
+            var detail = service.GetMenuItemById(id);
+            var model =
+                new MenuItemEdit
+                {
+                    Name = detail.Name,
+                    Description = detail.Description,
+                    Category = detail.Category,
+                    Price = detail.Price,
+                    ServingsInStock = detail.ServingsInStock
+                };
+            return View(model);
+        }
+
 
 
         private MenuItemService CreateMenuItemService()
