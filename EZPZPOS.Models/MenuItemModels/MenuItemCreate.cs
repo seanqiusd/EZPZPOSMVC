@@ -7,11 +7,9 @@ using System.Threading.Tasks;
 
 namespace EZPZPOS.Models.MenuItemModels
 {
-    public class MenuItemListItem
+    public class MenuItemCreate
     {
-        [Display(Name= "Menu Item ID")]
-        public int MenuItemId { get; set; }
-
+        [Required]
         [MinLength(1, ErrorMessage = "At least 1 character required")]
         [Display(Name = "Menu Item Name")]
         public string Name { get; set; }
@@ -19,32 +17,16 @@ namespace EZPZPOS.Models.MenuItemModels
         [MinLength(1, ErrorMessage = "At least 1 character required")]
         public string Description { get; set; }
 
+        [Required]
         [MinLength(1, ErrorMessage = "At least 1 character required")]
         public string Category { get; set; }
 
+        [Required]
         [Range(0.01, 10000.00, ErrorMessage = "Price must be between 0.01 and 10000.00")]
         public decimal Price { get; set; }
 
-
+        [Required]
         [Display(Name = "Servings In Stock")]
         public double ServingsInStock { get; set; }
-
-        [Display(Name = "Is Available")]
-        public bool IsAvailable
-        {
-            get
-            {
-                if (ServingsInStock > 0)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-
-        }
-
     }
 }
