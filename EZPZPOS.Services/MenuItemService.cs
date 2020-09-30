@@ -53,10 +53,8 @@ namespace EZPZPOS.Services
                                 {
                                     MenuItemId = e.MenuItemId,
                                     Name = e.Name,
-                                    Description = e.Description,
                                     Category = e.Category,
                                     Price = e.Price,
-                                    ServingsInStock = e.ServingsInStock,
                                 }
                         );
 
@@ -64,7 +62,27 @@ namespace EZPZPOS.Services
             }
         }
 
-
+        // GET -- Menu Item by ID
+        public MenuItemDetail GetMenuItemById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .MenuItems
+                        .Single(e => e.MenuItemId == id);
+                return
+                    new MenuItemDetail
+                    {
+                        MenuItemId = entity.MenuItemId,
+                        Name = entity.Name,
+                        Description = entity.Description,
+                        Category = entity.Category,
+                        Price = entity.Price,
+                        ServingsInStock = entity.ServingsInStock
+                    };
+            }
+        }
 
 
     }

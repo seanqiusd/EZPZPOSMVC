@@ -44,11 +44,17 @@ namespace EZPZPOS.MVC.Controllers
                 return RedirectToAction("Index");
             };
 
-            ModelState.AddModelError("", "Menu Item Could Not Be Created.");
-
             return View(model);
         }
 
+        // GET: MenuItem/Details/{id}
+        public ActionResult Details(int id)
+        {
+            var svc = CreateMenuItemService();
+            var model = svc.GetMenuItemById(id);
+
+            return View(model);
+        }
 
 
 

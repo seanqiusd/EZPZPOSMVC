@@ -172,7 +172,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MenuItemController.cs" />
-    <Compile Include="Controllers\NoteListItem.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -244,6 +243,7 @@
     <Content Include="Views\Guest\Delete.cshtml" />
     <Content Include="Views\MenuItem\Index.cshtml" />
     <Content Include="Views\MenuItem\Create.cshtml" />
+    <Content Include="Views\MenuItem\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

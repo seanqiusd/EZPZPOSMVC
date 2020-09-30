@@ -44,8 +44,6 @@ namespace EZPZPOS.MVC.Controllers
                 return RedirectToAction("Index");
             };
 
-            //ModelState.AddModelError("", "Guest could not be created.");
-
             return View(model);
 
         }
