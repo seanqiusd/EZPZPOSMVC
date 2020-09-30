@@ -64,6 +64,7 @@ namespace EZPZPOS.MVC.Controllers
             var model =
                 new MenuItemEdit
                 {
+                    MenuItemId = detail.MenuItemId,
                     Name = detail.Name,
                     Description = detail.Description,
                     Category = detail.Category,
@@ -97,6 +98,7 @@ namespace EZPZPOS.MVC.Controllers
             ModelState.AddModelError("", "Your Menu Item Could Not Be Updated.");
             return View(model);
         }
+
 
 
 
