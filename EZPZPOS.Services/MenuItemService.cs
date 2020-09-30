@@ -104,6 +104,22 @@ namespace EZPZPOS.Services
             }
         }
 
+        // Delete -- MenuItem
+        public bool DeleteMenuItem(int menuItemId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .MenuItems
+                        .Single(e => e.MenuItemId == menuItemId);
+
+                ctx.MenuItems.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
 
 
     }

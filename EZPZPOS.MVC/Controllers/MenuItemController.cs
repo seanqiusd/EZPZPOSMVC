@@ -99,7 +99,30 @@ namespace EZPZPOS.MVC.Controllers
             return View(model);
         }
 
+        // GET: MenuItem/Delete/{id}
+        [ActionName("Delete")]
+        public ActionResult Delete(int id)
+        {
+            var svc = CreateMenuItemService();
+            var model = svc.GetMenuItemById(id);
 
+            return View(model);
+        }
+
+        // POST: MenuItem/Delete/{id}
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletePost(int id)
+        {
+            var service = CreateMenuItemService();
+
+            service.DeleteMenuItem(id);
+
+            TempData["SaveResult"] = "Your Menu Item Was Deleted";
+
+            return RedirectToAction("Index");
+        }
 
 
         private MenuItemService CreateMenuItemService()
