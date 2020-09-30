@@ -58,6 +58,7 @@
     <Compile Include="GuestModels\GuestDetail.cs" />
     <Compile Include="GuestModels\GuestEdit.cs" />
     <Compile Include="GuestModels\GuestListItem.cs" />
+    <Compile Include="MenuItemModels\MenuItemListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -65,7 +66,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="MenuItemModels\" />
     <Folder Include="OrderModels\" />
   </ItemGroup>
   <ItemGroup>
