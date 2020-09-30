@@ -73,6 +73,31 @@ namespace EZPZPOS.MVC.Controllers
             return View(model);
         }
 
+        // POST: MenuItem/Edit/{id}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, MenuItemEdit model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            if (model.MenuItemId != id)
+            {
+                ModelState.AddModelError("", "Menu Item Id Mismatch");
+                return View(model);
+            }
+
+            var service = CreateMenuItemService();
+
+            if (service.UpdateMenuItem(model))
+            {
+                TempData["SaveResult"] = "Your Menu Item Was Updated.";
+                return RedirectToAction("Index");
+            }
+
+            ModelState.AddModelError("", "Your Menu Item Could Not Be Updated.");
+            return View(model);
+        }
+
 
 
         private MenuItemService CreateMenuItemService()

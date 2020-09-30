@@ -244,6 +244,7 @@
     <Content Include="Views\MenuItem\Index.cshtml" />
     <Content Include="Views\MenuItem\Create.cshtml" />
     <Content Include="Views\MenuItem\Details.cshtml" />
+    <Content Include="Views\MenuItem\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
