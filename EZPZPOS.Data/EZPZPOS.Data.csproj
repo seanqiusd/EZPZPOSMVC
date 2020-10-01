@@ -85,6 +85,10 @@
     <Compile Include="Migrations\202010011449034_GuestDataLastVisitUtcRemovedToBeStretchGoal.Designer.cs">
       <DependentUpon>202010011449034_GuestDataLastVisitUtcRemovedToBeStretchGoal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010011608309_MenuItemDataAndModelsServingsInStockAndIsAvailableRefactoredIntoService.cs" />
+    <Compile Include="Migrations\202010011608309_MenuItemDataAndModelsServingsInStockAndIsAvailableRefactoredIntoService.Designer.cs">
+      <DependentUpon>202010011608309_MenuItemDataAndModelsServingsInStockAndIsAvailableRefactoredIntoService.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -114,6 +118,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010011449034_GuestDataLastVisitUtcRemovedToBeStretchGoal.resx">
       <DependentUpon>202010011449034_GuestDataLastVisitUtcRemovedToBeStretchGoal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010011608309_MenuItemDataAndModelsServingsInStockAndIsAvailableRefactoredIntoService.resx">
+      <DependentUpon>202010011608309_MenuItemDataAndModelsServingsInStockAndIsAvailableRefactoredIntoService.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

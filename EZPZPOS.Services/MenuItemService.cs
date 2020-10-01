@@ -27,8 +27,11 @@ namespace EZPZPOS.Services
                     Description = model.Description,
                     Category = model.Category,
                     Price = model.Price,
-                    ServingsInStock = model.ServingsInStock
+                    ServingsInStock = model.ServingsInStock,
+                    IsAvailable = true
                 };
+            if (entity.ServingsInStock < 0)
+                entity.IsAvailable = false;
 
             using (var ctx = new ApplicationDbContext())
             {
@@ -54,7 +57,9 @@ namespace EZPZPOS.Services
                                     Name = e.Name,
                                     Category = e.Category,
                                     Price = e.Price,
+                                    IsAvailable = e.IsAvailable,
                                 }
+
                         );
 
                 return query.ToArray();

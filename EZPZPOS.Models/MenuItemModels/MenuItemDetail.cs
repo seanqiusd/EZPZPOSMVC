@@ -29,21 +29,5 @@ namespace EZPZPOS.Models.MenuItemModels
         [Display(Name = "Servings In Stock")]
         public double ServingsInStock { get; set; }
 
-        [Display(Name = "Is Available")]
-        public bool IsAvailable
-        {
-            get
-            {
-                if (ServingsInStock > 0)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-
-        }
     }
 }

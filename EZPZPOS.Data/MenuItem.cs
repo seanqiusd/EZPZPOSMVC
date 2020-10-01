@@ -35,22 +35,7 @@ namespace EZPZPOS.Data
         public double ServingsInStock { get; set; }
 
         [Display(Name ="Is Available: True/False")]
-        public bool IsAvailable
-        {
-            get
-            {
-                if (ServingsInStock > 0)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            
-        }
-
-
+        public bool IsAvailable { get; set; }
+        
     }
 }
