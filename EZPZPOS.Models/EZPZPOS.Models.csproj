@@ -62,15 +62,14 @@
     <Compile Include="MenuItemModels\MenuItemDetail.cs" />
     <Compile Include="MenuItemModels\MenuItemEdit.cs" />
     <Compile Include="MenuItemModels\MenuItemListItem.cs" />
+    <Compile Include="OrderModels\OrderListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="OrderModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\EZPZPOS.Data\EZPZPOS.Data.csproj">
       <Project>{2A0EF872-1A30-45B5-AC9C-635F3C94F445}</Project>

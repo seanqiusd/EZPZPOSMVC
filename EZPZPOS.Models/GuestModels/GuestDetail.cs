@@ -42,10 +42,5 @@ namespace EZPZPOS.Models.GuestModels
             }
         }
 
-        [Display(Name = "Date Of Last Visit")] // likely going to remove this from here and from data bc this is a stretch goal that should be in services
-        public DateTimeOffset LastVisitUtc { get; set; }
-
-
-
     }
 }

@@ -23,7 +23,6 @@ namespace EZPZPOS.Services
             var entity =
                 new MenuItem()
                 {
-
                     Name = model.Name,
                     Description = model.Description,
                     Category = model.Category,

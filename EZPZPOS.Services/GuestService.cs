@@ -58,7 +58,7 @@ namespace EZPZPOS.Services
                                     FirstName = e.FirstName,
                                     LastName = e.LastName,
                                     ContactNumber = e.ContactNumber,
-                                    // May need to add a CreatedUtc here and to data and model
+                                    // May need to add a CreatedUtc here and to data and model for a stretch goal
                                 }
                         );
 
@@ -82,8 +82,7 @@ namespace EZPZPOS.Services
                         FirstName = entity.FirstName,
                         LastName = entity.LastName,
                         ContactNumber = entity.ContactNumber,
-                        Notes = entity.Notes,
-                        LastVisitUtc = entity.LastVisitUtc
+                        Notes = entity.Notes
                     };
             }
         }

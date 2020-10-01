@@ -48,9 +48,5 @@ namespace EZPZPOS.Data
             }
         }
 
-        [Display(Name ="Date Of Last Visit")]
-        public DateTimeOffset LastVisitUtc { get; set; }
-
-
     }
 }
