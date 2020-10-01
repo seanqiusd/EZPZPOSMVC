@@ -28,10 +28,13 @@ namespace EZPZPOS.Services
                     Category = model.Category,
                     Price = model.Price,
                     ServingsInStock = model.ServingsInStock,
-                    IsAvailable = true
+                    IsAvailable = false
                 };
-            if (entity.ServingsInStock < 0)
+            if (entity.ServingsInStock > 0) // Just added all this
+                entity.IsAvailable = true;
+            else
                 entity.IsAvailable = false;
+
 
             using (var ctx = new ApplicationDbContext())
             {
@@ -103,6 +106,12 @@ namespace EZPZPOS.Services
                 entity.Category =model.Category;
                 entity.Price = model.Price;
                 entity.ServingsInStock = model.ServingsInStock;
+
+                // Just added this
+                if (entity.ServingsInStock > 0)
+                    entity.IsAvailable = true;
+                else
+                    entity.IsAvailable = false;
 
                 return ctx.SaveChanges() == 1;
             }
