@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EZPZPOS.Models.OrderModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,6 +12,8 @@ namespace EZPZPOS.MVC.Controllers
         // GET: Order
         public ActionResult Index()
         {
+            var model = new OrderListItem[0];
+
             return View();
         }
     }

@@ -29,8 +29,6 @@ namespace EZPZPOS.Models.OrderModels
         [Range(1, 10000, ErrorMessage = "Quantity must be at least 1")]
         public int Quantity { get; set; }
 
-        public string Notes { get; set; }
-
         public decimal Subtotal { get; }
 
         [Display(Name = "Tip Amount")]

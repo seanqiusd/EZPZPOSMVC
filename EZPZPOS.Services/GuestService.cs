@@ -29,7 +29,8 @@ namespace EZPZPOS.Services
                     LastName = model.LastName,
                     ContactNumber = model.ContactNumber,
                     FullAddress = model.FullAddress,
-                    Notes = model.Notes
+                    Notes = model.Notes,
+                    FirstTime = true
                     // May need to add a CreatedUtc here and to data and model
                 };
 
@@ -58,6 +59,7 @@ namespace EZPZPOS.Services
                                     FirstName = e.FirstName,
                                     LastName = e.LastName,
                                     ContactNumber = e.ContactNumber,
+                                    FirstTime = e.FirstTime,
                                     // May need to add a CreatedUtc here and to data and model for a stretch goal
                                 }
                         );

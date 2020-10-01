@@ -31,22 +31,9 @@ namespace EZPZPOS.Data
 
         public string Notes { get; set; }
 
+
         [Display(Name ="First Visit: True/False")]
-        public bool FirstTime
-        {
-            get
-            {
-                Order order = new Order();
-                if (GuestId == order.GuestId)
-                {
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }
-            }
-        }
+        public bool FirstTime { get; set; }
 
     }
 }

@@ -25,22 +25,5 @@ namespace EZPZPOS.Models.GuestModels
 
         public string Notes { get; set; }
 
-        [Display(Name = "First Visit")] // likely going to remove this from here and from data bc this is a stretch goal that should be in services
-        public bool FirstTime
-        {
-            get
-            {
-                Order order = new Order();
-                if (GuestId == order.GuestId)
-                {
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }
-            }
-        }
-
     }
 }

@@ -27,21 +27,7 @@ namespace EZPZPOS.Models.GuestModels
         public string ContactNumber { get; set; }
 
         [Display(Name = "First Visit")]
-        public bool FirstTime
-        {
-            get
-            {
-                Order order = new Order();
-                if (GuestId == order.GuestId)
-                {
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }
-            }
-        }
+        public bool FirstTime { get; set; }
 
 
     }
