@@ -30,6 +30,12 @@
             @Html.DisplayNameFor(model => model.GuestId)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.OrderDateTimeUtc)
         </th>
         <th>
@@ -55,40 +61,46 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.OrderId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GuestId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OrderDateTimeUtc)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TypeOfOrder)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MenuItemId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Quantity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Subtotal)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Gratuity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GrandTotal)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.OrderId)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.GuestId)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FirstName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.LastName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.OrderDateTimeUtc)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TypeOfOrder)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.MenuItemId)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Quantity)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Subtotal)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Gratuity)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.GrandTotal)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.OrderId }) |
+        @Html.ActionLink("Details", "Details", new { id = item.OrderId }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.OrderId })
+    </td>
+</tr>
     }
 
 </table>

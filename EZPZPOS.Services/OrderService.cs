@@ -53,6 +53,8 @@ namespace EZPZPOS.Services
                                 {
                                     OrderId = e.OrderId,
                                     GuestId = e.GuestId,
+                                    FirstName = e.Guest.FirstName,
+                                    LastName = e.Guest.LastName,
                                     OrderDateTimeUtc = e.OrderDateTimeUtc,
                                     TypeOfOrder = e.TypeOfOrder,
                                     MenuItemId = e.MenuItemId,
@@ -80,6 +82,8 @@ namespace EZPZPOS.Services
                     {
                         OrderId = entity.OrderId,
                         GuestId = entity.GuestId,
+                        FirstName = entity.Guest.FirstName,
+                        LastName = entity.Guest.LastName,
                         OrderDateTimeUtc = entity.OrderDateTimeUtc,
                         TypeOfOrder = entity.TypeOfOrder,
                         MenuItemId = entity.MenuItemId,

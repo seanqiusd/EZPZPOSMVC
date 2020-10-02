@@ -31,7 +31,7 @@ namespace EZPZPOS.MVC.Controllers
         //GET: Order/Create
         public ActionResult Create()
         {
-            var guests = new SelectList(_db.Guests.ToList(), "GuestId", "LastName");
+            var guests = new SelectList(_db.Guests.ToList(), "GuestId", "FullName");
             ViewBag.Guests = guests;
 
             //var kindOfOrders = new SelectList(_db.Orders.ToList(), "TypeOfOrder", "TypeOfOrder");

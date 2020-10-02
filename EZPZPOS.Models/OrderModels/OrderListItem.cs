@@ -17,6 +17,12 @@ namespace EZPZPOS.Models.OrderModels
         [Display(Name = "Guest ID")]
         public int GuestId { get; set; }
 
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+
         [Display(Name = "Order Date/Time")]
         public DateTimeOffset OrderDateTimeUtc { get; set; }
 
