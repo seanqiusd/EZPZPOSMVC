@@ -1,5 +1,7 @@
 ﻿using EZPZPOS.Data;
 using EZPZPOS.Models.OrderModels;
+using EZPZPOS.Services;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,13 +21,26 @@ namespace EZPZPOS.MVC.Controllers
             //List<Order> orderedOrderList = orderList.OrderBy(ord => ord.OrderDateTimeUtc).ToList();
             //var model = new OrderListItem[0].OrderBy(o => o.OrderDateTimeUtc).ToList();
 
-            var model = new OrderListItem[0];
+            var userId = User.Identity.GetUserId();
+            var service = new OrderService(userId);
+            var model = service.GetOrders();
+
             return View(model);
         }
 
         //GET: Order/Create
         public ActionResult Create()
         {
+            var guests = new SelectList(_db.Guests.ToList(), "GuestId", "LastName");
+            ViewBag.Guests = guests;
+
+            //var kindOfOrders = new SelectList(_db.Orders.ToList(), "TypeOfOrder", "TypeOfOrder");
+            //ViewBag.Orders = kindOfOrders; This for some reason will display the very highest position enum twice and that's it
+
+            var menuItems = new SelectList(_db.MenuItems.ToList(), "MenuItemId", "Name");
+            ViewBag.MenuItems = menuItems;
+
+
             return View();
         }
 
@@ -34,25 +49,25 @@ namespace EZPZPOS.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(OrderCreate model)
         {
-            //if (!ModelState.IsValid) return View(model);
+            if (!ModelState.IsValid) return View(model);
 
-            //var service = CreateOrderService();
+            var service = CreateOrderService();
 
-            //if (service.CreateOrder(model))
-            //{
-            //    TempData["SaveResult"] = "Your Order Was Created.";
-            //    return RedirectToAction("Index");
-            //};
-
-            //return View(model);
-
-            if (ModelState.IsValid)
+            if (service.CreateOrder(model))
             {
+                TempData["SaveResult"] = "Your Order Was Created.";
+                return RedirectToAction("Index");
+            };
 
-            }
             return View(model);
         }
 
+        private OrderService CreateOrderService()
+        {
+            var userId = User.Identity.GetUserId();
+            var service = new OrderService(userId);
+            return service;
+        }
 
     }
 }
