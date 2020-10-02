@@ -66,7 +66,30 @@ namespace EZPZPOS.Services
             }
         }
 
-
+        // GET -- Order by ID
+        public OrderDetail GetOrderById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Orders
+                        .Single(e => e.OrderId == id);
+                return
+                    new OrderDetail
+                    {
+                        OrderId = entity.OrderId,
+                        GuestId = entity.GuestId,
+                        OrderDateTimeUtc = entity.OrderDateTimeUtc,
+                        TypeOfOrder = entity.TypeOfOrder,
+                        MenuItemId = entity.MenuItemId,
+                        Name = entity.MenuItem.Name,
+                        Quantity = entity.Quantity,
+                        Notes = entity.Notes,
+                        Gratuity = entity.Gratuity
+                    };
+            }
+        }
 
 
 

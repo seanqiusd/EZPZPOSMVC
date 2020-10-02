@@ -21,6 +21,13 @@ namespace EZPZPOS.Data
 
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string FullName
+        {
+            get
+            {
+                return $"{FirstName} {LastName}";
+            }
+        }
 
         [DataType(DataType.PhoneNumber)]
         [Display(Name ="Phone Number")]

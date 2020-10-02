@@ -63,6 +63,7 @@
     <Compile Include="MenuItemModels\MenuItemEdit.cs" />
     <Compile Include="MenuItemModels\MenuItemListItem.cs" />
     <Compile Include="OrderModels\OrderCreate.cs" />
+    <Compile Include="OrderModels\OrderDetail.cs" />
     <Compile Include="OrderModels\OrderListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

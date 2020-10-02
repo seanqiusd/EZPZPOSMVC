@@ -93,6 +93,10 @@
     <Compile Include="Migrations\202010011844413_GuestDataFirstTimeRefactoredIntoService.Designer.cs">
       <DependentUpon>202010011844413_GuestDataFirstTimeRefactoredIntoService.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010022004293_GuestDataFullNameAdded.cs" />
+    <Compile Include="Migrations\202010022004293_GuestDataFullNameAdded.Designer.cs">
+      <DependentUpon>202010022004293_GuestDataFullNameAdded.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -128,6 +132,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010011844413_GuestDataFirstTimeRefactoredIntoService.resx">
       <DependentUpon>202010011844413_GuestDataFirstTimeRefactoredIntoService.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010022004293_GuestDataFullNameAdded.resx">
+      <DependentUpon>202010022004293_GuestDataFullNameAdded.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

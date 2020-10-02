@@ -58,9 +58,22 @@ namespace EZPZPOS.MVC.Controllers
                 TempData["SaveResult"] = "Your Order Was Created.";
                 return RedirectToAction("Index");
             };
+            // Likley will need to add some logic here to update the ServingsInStock
+            return View(model);
+        }
+
+        // GET: Order/Details/{id}
+        public ActionResult Details(int id)
+        {
+            var svc = CreateOrderService();
+            var model = svc.GetOrderById(id);
 
             return View(model);
         }
+
+
+
+
 
         private OrderService CreateOrderService()
         {
