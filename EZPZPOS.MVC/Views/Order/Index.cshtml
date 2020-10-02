@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Orders</h2>
 
 <p>
     @Html.ActionLink("Create New Order", "Create")
@@ -16,6 +16,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.GuestId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TypeOfOrder)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.OrderDateTimeUtc)
@@ -30,46 +33,43 @@
             @Html.DisplayNameFor(model => model.Subtotal)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Gratuity)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.GrandTotal)
         </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.OrderId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GuestId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OrderDateTimeUtc)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MenuItemId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Quantity)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Subtotal)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Gratuity)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GrandTotal)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.OrderId)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.GuestId)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.OrderDateTimeUtc)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TypeOfOrder)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.MenuItemId)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Quantity)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Subtotal)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.GrandTotal)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+    </td>
+</tr>
 }
 
 </table>
