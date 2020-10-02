@@ -71,6 +71,21 @@ namespace EZPZPOS.MVC.Controllers
             return View(model);
         }
 
+        // GET: Order/Edit/{id} aka Update
+        public ActionResult Edit(int id)
+        {
+            var service = CreateOrderService();
+            var detail = service.GetOrderById(id);
+            var model =
+                new OrderEdit
+                {
+                    TypeOfOrder = detail.TypeOfOrder,
+                    MenuItemId = detail.MenuItemId,
+                    Quantity = detail.Quantity,
+                    Notes = detail.Notes
+                };
+            return View(model);
+        }
 
 
 

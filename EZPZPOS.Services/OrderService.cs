@@ -95,7 +95,24 @@ namespace EZPZPOS.Services
             }
         }
 
+        // Update -- Menu Item
+        public bool UpdateOrder(OrderEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Orders
+                        .Single(e => e.OrderId == model.OrderId);
 
+                entity.TypeOfOrder = model.TypeOfOrder;
+                entity.MenuItemId = model.MenuItemId;
+                entity.Quantity = model.Quantity;
+                entity.Notes = model.Notes;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
 
     }
 }
