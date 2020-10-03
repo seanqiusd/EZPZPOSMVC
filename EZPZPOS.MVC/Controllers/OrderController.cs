@@ -76,18 +76,48 @@ namespace EZPZPOS.MVC.Controllers
         {
             var service = CreateOrderService();
             var detail = service.GetOrderById(id);
+
+            var menuItems = new SelectList(_db.MenuItems.ToList(), "MenuItemId", "Name");
+            ViewBag.MenuItems = menuItems;
+
             var model =
                 new OrderEdit
                 {
+                    OrderId = detail.OrderId,
                     TypeOfOrder = detail.TypeOfOrder,
                     MenuItemId = detail.MenuItemId,
                     Quantity = detail.Quantity,
                     Notes = detail.Notes
                 };
+
+
             return View(model);
         }
 
+        // POST: Order/Edit/{id}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, OrderEdit model)
+        {
+            if (!ModelState.IsValid) return View(model);
 
+            if (model.OrderId != id)
+            {
+                ModelState.AddModelError("", "Order Id Mismatch");
+                return View(model);
+            }
+
+            var service = CreateOrderService();
+
+            if (service.UpdateOrder(model))
+            {
+                TempData["SaveResult"] = "Your Order Was Updated.";
+                return RedirectToAction("Index");
+            }
+
+            ModelState.AddModelError("", "Your Order Could Not Be Updated.");
+            return View(model);
+        }
 
 
         private OrderService CreateOrderService()
