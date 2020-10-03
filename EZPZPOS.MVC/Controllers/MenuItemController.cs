@@ -18,7 +18,7 @@ namespace EZPZPOS.MVC.Controllers
         {
             var userId = User.Identity.GetUserId();
             var service = new MenuItemService(userId);
-            var model = service.GetMenuItems().OrderBy(o => o.Name);
+            var model = service.GetMenuItems().OrderBy(i => i.Name);
             
             return View(model);
         }
