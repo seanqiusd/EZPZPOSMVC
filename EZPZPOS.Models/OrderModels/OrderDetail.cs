@@ -43,53 +43,21 @@ namespace EZPZPOS.Models.OrderModels
         [Display(Name = "Quantity Needed")]
         public int Quantity { get; set; }
 
+        [Display(Name = "Special Instructions")]
         public string Notes { get; set; }
 
 
         [Display(Name = "Tax Rate")]
-        public decimal SetTax
-        {
-            get
-            {
-                decimal taxRate = 0.07m;
-                return taxRate;
-            }
-        }
+        public decimal SetTax { get; set; }
 
-        public decimal Subtotal
-        {
-            get
-            {
-                MenuItem item = new MenuItem();
-                decimal subtotal = item.Price * Quantity;
-                return subtotal;
-            }
-        }
+        public decimal Subtotal { get; set; }
 
 
         [Display(Name = "Tip Amount")]
-        public decimal Gratuity
-        {
-            get
-            {
-                decimal tip = 0;
-                return tip;
-            }
-            set
-            {
-
-            }
-        }
+        public decimal Gratuity { get; set; }
 
         [Display(Name = "Grand Total")]
-        public decimal GrandTotal
-        {
-            get
-            {
-                decimal grandTotal = (SetTax * Subtotal) + Gratuity;
-                return grandTotal;
-            }
-        }
+        public decimal GrandTotal { get; set; }
 
     }
 }

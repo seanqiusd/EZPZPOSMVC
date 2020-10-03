@@ -33,15 +33,15 @@ namespace EZPZPOS.Models.OrderModels
         public int MenuItemId { get; set; }
 
         [Display(Name = "Quantity Needed")]
-        [Range(1, 10000, ErrorMessage = "Quantity must be at least 1")]
+        //[Range(1, 10000, ErrorMessage = "Quantity must be at least 1")]
         public int Quantity { get; set; }
 
-        public decimal Subtotal { get; }
+        public decimal Subtotal { get; set; }
 
         [Display(Name = "Tip Amount")]
         public decimal Gratuity { get; set; }
 
         [Display(Name = "Grand Total")]
-        public decimal GrandTotal { get; }
+        public decimal GrandTotal { get; set; }
     }
 }

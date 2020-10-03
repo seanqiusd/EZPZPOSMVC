@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,6 +30,8 @@ namespace EZPZPOS.Models.OrderModels
 
         [Display(Name = "Special Instructions")]
         public string Notes { get; set; }
+
+
 
     }
 }

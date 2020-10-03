@@ -13,6 +13,18 @@ namespace EZPZPOS.Models.OrderModels
         [Display(Name = "Order ID")]
         public int OrderId { get; set; }
 
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+
+        [Display(Name = "Guest Name")]
+        public string FullName
+        {
+            get
+            {
+                return $"{FirstName} {LastName}";
+            }
+        }
+
         [Required]
         [Display(Name = "Order Type")]
         public OrderType TypeOfOrder { get; set; }

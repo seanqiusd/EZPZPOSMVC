@@ -79,6 +79,8 @@ namespace EZPZPOS.MVC.Controllers
             var model =
                 new OrderEdit
                 {
+                    FirstName = detail.FirstName,
+                    LastName = detail.LastName,
                     OrderId = detail.OrderId,
                     TypeOfOrder = detail.TypeOfOrder,
                     MenuItemId = detail.MenuItemId,

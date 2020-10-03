@@ -28,9 +28,8 @@ namespace EZPZPOS.Services
                     TypeOfOrder = model.TypeOfOrder,
                     MenuItemId = model.MenuItemId,
                     Quantity = model.Quantity,
-                    Notes = model.Notes
+                    Notes = model.Notes,
                 };
-
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.Orders.Add(entity);
@@ -49,7 +48,7 @@ namespace EZPZPOS.Services
                         //.Where(e => e.ServerId == _userId)
                         .Select(
                             e =>
-                                new OrderListItem
+                                new OrderListItem ()
                                 {
                                     OrderId = e.OrderId,
                                     GuestId = e.GuestId,
@@ -59,6 +58,8 @@ namespace EZPZPOS.Services
                                     TypeOfOrder = e.TypeOfOrder,
                                     MenuItemId = e.MenuItemId,
                                     Quantity = e.Quantity,
+                                    GrandTotal = e.GrandTotal,
+                                    Subtotal = e.Subtotal,
                                     Gratuity = e.Gratuity,
                                 }
 
@@ -89,13 +90,16 @@ namespace EZPZPOS.Services
                         MenuItemId = entity.MenuItemId,
                         Name = entity.MenuItem.Name,
                         Quantity = entity.Quantity,
-                        Notes = entity.Notes,
-                        Gratuity = entity.Gratuity
+                        Subtotal = entity.Subtotal,
+                        Gratuity = entity.Gratuity,
+                        SetTax = entity.SetTax,
+                        GrandTotal = entity.GrandTotal,
+                        Notes = entity.Notes
                     };
             }
         }
 
-        // Update -- Menu Item
+        // Update -- Order
         public bool UpdateOrder(OrderEdit model)
         {
             using (var ctx = new ApplicationDbContext())

@@ -51,8 +51,7 @@ namespace EZPZPOS.Data
         {
             get
             {
-                MenuItem item = new MenuItem();
-                decimal subtotal = item.Price* Quantity;
+                decimal subtotal = MenuItem.Price* Quantity;
                 return subtotal;
             }
         }
@@ -77,11 +76,10 @@ namespace EZPZPOS.Data
         {
             get
             {
-                decimal grandTotal = (SetTax * Subtotal) + Gratuity;
+                decimal grandTotal = (SetTax * Subtotal) + Gratuity + Subtotal;
                 return grandTotal;
             }
         }
-
 
     }
 
