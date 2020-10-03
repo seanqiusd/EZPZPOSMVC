@@ -1,0 +1,128 @@
+﻿@model EZPZPOS.Models.OrderModels.OrderDetail
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete Order</h2>
+
+<h3>Are you sure you want to delete this order?</h3>
+<div>
+    <h4>OrderDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GuestId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GuestId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderDateTimeUtc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderDateTimeUtc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TypeOfOrder)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TypeOfOrder)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MenuItemId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MenuItemId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Notes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Notes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SetTax)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SetTax)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Subtotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Subtotal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gratuity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gratuity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GrandTotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GrandTotal)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

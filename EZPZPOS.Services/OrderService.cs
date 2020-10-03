@@ -114,5 +114,21 @@ namespace EZPZPOS.Services
             }
         }
 
+        // Delete -- Order
+        public bool DeleteOrder(int orderId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Orders
+                        .Single(e => e.OrderId == orderId);
+
+                ctx.Orders.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
     }
 }

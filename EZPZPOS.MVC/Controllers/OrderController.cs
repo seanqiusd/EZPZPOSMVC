@@ -119,6 +119,32 @@ namespace EZPZPOS.MVC.Controllers
             return View(model);
         }
 
+        // GET: Order/Delete/{id}
+        [ActionName("Delete")]
+        public ActionResult Delete(int id)
+        {
+            var svc = CreateOrderService();
+            var model = svc.GetOrderById(id);
+
+            return View(model);
+        }
+
+        // POST: Order/Delete/{id}
+        [HttpPost]
+        [ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletePost(int id)
+        {
+            var service = CreateOrderService();
+
+            service.DeleteOrder(id);
+
+            TempData["SaveResult"] = "Your Order Was Deleted";
+
+            return RedirectToAction("Index");
+        }
+
+
 
         private OrderService CreateOrderService()
         {
