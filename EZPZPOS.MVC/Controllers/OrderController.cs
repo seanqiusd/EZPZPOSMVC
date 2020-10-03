@@ -23,7 +23,7 @@ namespace EZPZPOS.MVC.Controllers
 
             var userId = User.Identity.GetUserId();
             var service = new OrderService(userId);
-            var model = service.GetOrders();
+            var model = service.GetOrders().OrderByDescending(o => o.OrderDateTimeUtc);
 
             return View(model);
         }
