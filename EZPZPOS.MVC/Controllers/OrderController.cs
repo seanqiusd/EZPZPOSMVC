@@ -17,10 +17,6 @@ namespace EZPZPOS.MVC.Controllers
         // GET: Order
         public ActionResult Index()
         {
-            //List<Order> orderList = _db.Orders.ToList();
-            //List<Order> orderedOrderList = orderList.OrderBy(ord => ord.OrderDateTimeUtc).ToList();
-            //var model = new OrderListItem[0].OrderBy(o => o.OrderDateTimeUtc).ToList();
-
             var userId = User.Identity.GetUserId();
             var service = new OrderService(userId);
             var model = service.GetOrders().OrderByDescending(o => o.OrderDateTimeUtc);
