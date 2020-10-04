@@ -28,6 +28,14 @@ namespace EZPZPOS.Models.OrderModels
             }
         }
 
+        // Testing the follwoing 
+        [DataType(DataType.PhoneNumber)]
+        [Display(Name = "Phone Number")]
+        public string ContactNumber { get; set; }
+
+        [Display(Name = "Full Address")]
+        public string FullAddress { get; set; }
+
         [Display(Name = "Order Date/Time")]
         public DateTimeOffset OrderDateTimeUtc { get; set; }
 

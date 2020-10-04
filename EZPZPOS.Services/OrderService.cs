@@ -85,6 +85,8 @@ namespace EZPZPOS.Services
                         GuestId = entity.GuestId,
                         FirstName = entity.Guest.FirstName,
                         LastName = entity.Guest.LastName,
+                        ContactNumber = entity.Guest.ContactNumber,
+                        FullAddress = entity.Guest.FullAddress,
                         OrderDateTimeUtc = entity.OrderDateTimeUtc,
                         TypeOfOrder = entity.TypeOfOrder,
                         MenuItemId = entity.MenuItemId,
