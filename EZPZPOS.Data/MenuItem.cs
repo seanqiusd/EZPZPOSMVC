@@ -18,7 +18,6 @@ namespace EZPZPOS.Data
         [Display(Name ="Menu Item Name")]
         public string Name { get; set; }
 
-        [Required]
         [MinLength(1, ErrorMessage ="At least 1 character required")]
         public string Description { get; set; }
 

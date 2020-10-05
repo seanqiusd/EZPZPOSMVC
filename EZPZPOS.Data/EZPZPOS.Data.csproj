@@ -109,6 +109,14 @@
     <Compile Include="Migrations\202010051451133_MenuItemDataRangeAddedForStock.Designer.cs">
       <DependentUpon>202010051451133_MenuItemDataRangeAddedForStock.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010051812026_UnsureWhy.cs" />
+    <Compile Include="Migrations\202010051812026_UnsureWhy.Designer.cs">
+      <DependentUpon>202010051812026_UnsureWhy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010051923546_DataClassUpdatedSomeAttributes.cs" />
+    <Compile Include="Migrations\202010051923546_DataClassUpdatedSomeAttributes.Designer.cs">
+      <DependentUpon>202010051923546_DataClassUpdatedSomeAttributes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -156,6 +164,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010051451133_MenuItemDataRangeAddedForStock.resx">
       <DependentUpon>202010051451133_MenuItemDataRangeAddedForStock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010051812026_UnsureWhy.resx">
+      <DependentUpon>202010051812026_UnsureWhy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010051923546_DataClassUpdatedSomeAttributes.resx">
+      <DependentUpon>202010051923546_DataClassUpdatedSomeAttributes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
