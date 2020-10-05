@@ -2,6 +2,7 @@
 using EZPZPOS.Models.MenuItemModels;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Mapping;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,10 +31,11 @@ namespace EZPZPOS.Services
                     ServingsInStock = model.ServingsInStock,
                     IsAvailable = false
                 };
-            if (entity.ServingsInStock > 0) // Just added all this
-                entity.IsAvailable = true;
-            else
-                entity.IsAvailable = false;
+
+                if (entity.ServingsInStock > 0)
+                    entity.IsAvailable = true;
+                else
+                    entity.IsAvailable = false;
 
 
             using (var ctx = new ApplicationDbContext())
@@ -64,6 +66,11 @@ namespace EZPZPOS.Services
                                 }
 
                         );
+                //// Trying This
+                //var item = new MenuItem(); 
+
+                //if (item.ServingsInStock == 0)
+                //    item.IsAvailable = false; // Trying this
 
                 return query.ToArray();
             }
@@ -108,10 +115,11 @@ namespace EZPZPOS.Services
                 entity.ServingsInStock = model.ServingsInStock;
 
                 // Just added this
-                if (entity.ServingsInStock > 0)
+                if (entity.ServingsInStock > 0 && entity.ServingsInStock >= 1)
                     entity.IsAvailable = true;
                 else
                     entity.IsAvailable = false;
+
 
                 return ctx.SaveChanges() == 1;
             }

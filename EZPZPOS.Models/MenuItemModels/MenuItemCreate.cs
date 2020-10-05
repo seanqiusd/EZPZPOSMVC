@@ -27,6 +27,7 @@ namespace EZPZPOS.Models.MenuItemModels
 
         [Required]
         [Display(Name = "Servings In Stock")]
+        [Range(0, int.MaxValue, ErrorMessage = "Can't have less than 0")]
         public double ServingsInStock { get; set; }
     }
 }

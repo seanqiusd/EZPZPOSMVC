@@ -30,8 +30,5 @@ namespace EZPZPOS.Models.OrderModels
 
         [Display(Name = "Special Instructions")]
         public string Notes { get; set; }
-
-
-
     }
 }

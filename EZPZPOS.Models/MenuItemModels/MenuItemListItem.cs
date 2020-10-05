@@ -12,14 +12,11 @@ namespace EZPZPOS.Models.MenuItemModels
         [Display(Name= "Menu Item ID")]
         public int MenuItemId { get; set; }
 
-        [MinLength(1, ErrorMessage = "At least 1 character required")]
         [Display(Name = "Menu Item Name")]
         public string Name { get; set; }
 
-        [MinLength(1, ErrorMessage = "At least 1 character required")]
         public string Category { get; set; }
 
-        [Range(0.01, 10000.00, ErrorMessage = "Price must be between 0.01 and 10000.00")]
         public decimal Price { get; set; }
 
         public bool IsAvailable { get; set; }

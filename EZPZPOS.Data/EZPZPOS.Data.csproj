@@ -105,6 +105,10 @@
     <Compile Include="Migrations\202010032259543_DeletedORderDataICollectionMenuItem.Designer.cs">
       <DependentUpon>202010032259543_DeletedORderDataICollectionMenuItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010051451133_MenuItemDataRangeAddedForStock.cs" />
+    <Compile Include="Migrations\202010051451133_MenuItemDataRangeAddedForStock.Designer.cs">
+      <DependentUpon>202010051451133_MenuItemDataRangeAddedForStock.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -149,6 +153,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010032259543_DeletedORderDataICollectionMenuItem.resx">
       <DependentUpon>202010032259543_DeletedORderDataICollectionMenuItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010051451133_MenuItemDataRangeAddedForStock.resx">
+      <DependentUpon>202010051451133_MenuItemDataRangeAddedForStock.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

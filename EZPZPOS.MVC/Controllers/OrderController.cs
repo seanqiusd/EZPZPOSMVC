@@ -49,13 +49,26 @@ namespace EZPZPOS.MVC.Controllers
 
             var service = CreateOrderService();
 
-            if (service.CreateOrder(model))
+            // Trying something
+            MenuItem item = _db.MenuItems.Find(model.MenuItemId);
+            if (item.IsAvailable.Equals(false))
             {
-                TempData["SaveResult"] = "Your Order Was Created.";
-                return RedirectToAction("Index");
-            };
-            // Likley will need to add some logic here to update the ServingsInStock
-            return View(model);
+                return HttpNotFound("Sorry, This Item Is Out Of Order At The Moment. Please Select Something Else.");
+            }
+            else if (item.ServingsInStock < model.Quantity)
+            {
+                return HttpNotFound("Sorry, We Don't Have Enough Of This Item.");
+            }
+            else
+            {
+                if (service.CreateOrder(model))
+                {
+                    TempData["SaveResult"] = "Your Order Was Created.";
+                    return RedirectToAction("Index");
+                }
+                else
+                    return View(model);
+            }
         }
 
         // GET: Order/Details/{id}
@@ -87,8 +100,6 @@ namespace EZPZPOS.MVC.Controllers
                     Quantity = detail.Quantity,
                     Notes = detail.Notes
                 };
-
-
             return View(model);
         }
 

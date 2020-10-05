@@ -3,7 +3,9 @@ using EZPZPOS.Models.OrderModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace EZPZPOS.Services
@@ -11,6 +13,7 @@ namespace EZPZPOS.Services
     public class OrderService
     {
         private readonly string _userId;
+        private readonly ApplicationDbContext _db = new ApplicationDbContext();
 
         public OrderService(string userId)
         {
@@ -30,10 +33,26 @@ namespace EZPZPOS.Services
                     Quantity = model.Quantity,
                     Notes = model.Notes,
                 };
+
+            //Trying 
+            //MenuItem item = new MenuItem();
+            //var menuItem = item.ServingsInStock -= entity.Quantity;
+            //return menuItem;
+
             using (var ctx = new ApplicationDbContext())
             {
+                MenuItem item = ctx.MenuItems.Single(x => x.MenuItemId == model.MenuItemId);
+                if (item.ServingsInStock >= model.Quantity)
+                {
+                    item.ServingsInStock -= entity.Quantity; // Trying this out to see if it fixes a bug
+                }
+                if (item.ServingsInStock > 0) // this added && works
+                    item.IsAvailable = true; // Trying this
+                else
+                    item.IsAvailable = false;
+
                 ctx.Orders.Add(entity);
-                return ctx.SaveChanges() == 1;
+                return ctx.SaveChanges() == 2;
             }
         }
 
@@ -48,7 +67,7 @@ namespace EZPZPOS.Services
                         //.Where(e => e.ServerId == _userId)
                         .Select(
                             e =>
-                                new OrderListItem ()
+                                new OrderListItem()
                                 {
                                     OrderId = e.OrderId,
                                     GuestId = e.GuestId,
