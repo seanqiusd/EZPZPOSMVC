@@ -1,0 +1,18 @@
+namespace EZPZPOS.Data.Migrations
+{
+    using System;
+    using System.Data.Entity.Migrations;
+    
+    public partial class RefactoredMenuItemData : DbMigration
+    {
+        public override void Up()
+        {
+            DropColumn("dbo.MenuItem", "IsAvailable");
+        }
+        
+        public override void Down()
+        {
+            AddColumn("dbo.MenuItem", "IsAvailable", c => c.Boolean(nullable: false));
+        }
+    }
+}

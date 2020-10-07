@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Security.Claims;
@@ -18,6 +19,25 @@ namespace EZPZPOS.Data
             // Add custom user claims here
             return userIdentity;
         }
+
+        [Required]
+        public string FirstName { get; set; }
+
+        [Required]
+        public string LastName { get; set; }
+
+        public string FullName
+        {
+            get
+            {
+                return $"{FirstName} {LastName}";
+            }
+        }
+
+        [Required]
+        public string Position { get; set; }
+
+
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -33,6 +53,10 @@ namespace EZPZPOS.Data
         }
 
         public DbSet<MenuItem> MenuItems { get; set; }
+        public DbSet<Guest> Guests { get; set; }
+        public DbSet<Order> Orders { get; set; }
+
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

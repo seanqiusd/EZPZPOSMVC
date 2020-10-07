@@ -54,11 +54,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GuestModels\GuestCreate.cs" />
+    <Compile Include="GuestModels\GuestDetail.cs" />
+    <Compile Include="GuestModels\GuestEdit.cs" />
+    <Compile Include="GuestModels\GuestListItem.cs" />
+    <Compile Include="MenuItemModels\MenuItemCreate.cs" />
+    <Compile Include="MenuItemModels\MenuItemDetail.cs" />
+    <Compile Include="MenuItemModels\MenuItemEdit.cs" />
+    <Compile Include="MenuItemModels\MenuItemListItem.cs" />
+    <Compile Include="OrderModels\OrderCreate.cs" />
+    <Compile Include="OrderModels\OrderDetail.cs" />
+    <Compile Include="OrderModels\OrderEdit.cs" />
+    <Compile Include="OrderModels\OrderListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\EZPZPOS.Data\EZPZPOS.Data.csproj">
+      <Project>{2A0EF872-1A30-45B5-AC9C-635F3C94F445}</Project>
+      <Name>EZPZPOS.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

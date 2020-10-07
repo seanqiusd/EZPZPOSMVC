@@ -1,6 +1,12 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    /*Trying stuff*/
+    /*For the view part of this make sure to go to SharedViewLayout.cshtml and make sure to put in or include line 7*/
+    background: url(https://33.media.tumblr.com/2e78093bc84f72e873f4acf1d2d93102/tumblr_ncr7x8hKBG1tf8vylo1_500.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: initial;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -21,4 +27,76 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+
+/*Ben helped me with this this adds your asset folder image*/
+.jumbotron-styling {
+    /*background-image: url("Assets/Tesla.jpg");*/
+    background: url(https://images.pexels.com/photos/98874/pexels-photo-98874.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 300px;
+    padding: 30px 30px 20px 30px;
+    box-shadow: 20px 10px 8px #000000;
+}
+
+/*
+    Stuff I'm trying out
+*/
+#card-border {
+    /*margin: 4px 7px 2px 4px;*/
+}
+
+.card-columns {
+    /*  border: thick;
+    border-color: aqua;*/
+    /*outline: 12px solid black;*/
+}
+
+#card-border {
+    /*  border: thick;
+    border-color: aqua;*/
+}
+
+.card-columns .card:hover .card-img {
+    opacity: 1;
+}
+
+.card-columns .card-body {
+    height: 100px;
+    font-family: 'Nunito', sans-serif;
+    background: #fbfafd;
+}
+
+.card-columns .card-img {
+    height: 20px;
+    vertical-align: bottom;
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+    opacity: .8;
+}
+
+#card-img {
+    height: 20px;
+    vertical-align: bottom;
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+    opacity: .8;
+}
+
+.modal .card-img {
+    height: 500px;
+    vertical-align: bottom;
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+}
+
+.card-columns .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(37,33,82,.12), 0 4px 8px rgba(37,33,82,.06);
 }
