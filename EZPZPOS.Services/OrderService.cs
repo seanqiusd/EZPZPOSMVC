@@ -155,8 +155,7 @@ namespace EZPZPOS.Services
                 //    //var newOrder = _db.Orders.Find(model.OrderId);
                 //    //MenuItem updatedItem = _db.MenuItems.Find(newOrder.MenuItemId);
                 //    ////_db.Orders.Remove(newOrder);
-                //    //item.ServingsInStock += (updatedItem.ServingsInStock - newOrder.Quantity);
-                //    //item.ServingsInStock += newOrder.Quantity;
+
                 //    //var updatedOrder = _db.Orders.Find(model.OrderId);
                 //    //MenuItem updatedItems = _db.MenuItems.Find(updatedOrder.MenuItemId);
                 //    //updatedItems.ServingsInStock -= updatedOrder.Quantity;
