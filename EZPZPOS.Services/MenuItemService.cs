@@ -22,23 +22,48 @@ namespace EZPZPOS.Services
         // Trying this
         public IEnumerable<MenuItemListItem> GetMenuItemList()
         {
-         
-            return _db.MenuItems.Select(e => new MenuItemListItem
+            using (var ctx = new ApplicationDbContext())
             {
-                MenuItemId = e.MenuItemId,
-                Name = e.Name
-            }).ToList();
+                var query =
+                    ctx
+                    .MenuItems.ToList()
+                    .Select(
+                        e => new MenuItemListItem()
+                        {
+                            MenuItemId = e.MenuItemId,
+                            Name = e.Name
+                        }
+                    );
+
+                return query.ToArray();
+            }
+
+            //return _db.MenuItems.Select(e => new MenuItemListItem
+            //{
+            //    MenuItemId = e.MenuItemId,
+            //    Name = e.Name
+            //}).ToList();
         }
 
         // Trying this too
-        public IEnumerable<MenuItemDetail> AccessMenuItemId()
-        {
-            return _db.MenuItems.Select(e => new MenuItemDetail
-            {
-                MenuItemId = e.MenuItemId,
-                ServingsInStock = e.ServingsInStock,
-            }).ToList();
-        }
+        //public IEnumerable<MenuItemDetail> AccessMenuItemId()
+        //{
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
+        //        var query =
+        //            ctx
+        //            .MenuItems.ToList()
+        //            .Select(
+        //                e => new MenuItemDetail()
+        //                {
+        //                    MenuItemId = e.MenuItemId,
+        //                    ServingsInStock = e.ServingsInStock,
+        //                }
+        //            );
+
+        //        return query.ToArray();
+        //    }
+        //}
 
 
 

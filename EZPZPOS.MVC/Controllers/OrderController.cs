@@ -33,7 +33,7 @@ namespace EZPZPOS.MVC.Controllers
             // Trying this stuff
             // ViewBag for GuestId and MenuId
             ViewBag.GuestId = AccessGuestIdList();
-            ViewBag.MenuItemId = AccessMenuItemIdList();
+            ViewBag.MenuItemId = AccessMenuIdList();
 
             //My stuff that works
             //var guests = new SelectList(_db.Guests.ToList(), "GuestId", "FullName");
@@ -187,6 +187,7 @@ namespace EZPZPOS.MVC.Controllers
             return RedirectToAction("Index");
         }
 
+        // Helper method for GuestId Dropdown to display with first and last name
         private List<SelectListItem> AccessGuestIdList()
         {
             var service = new GuestService(User.Identity.GetUserId());
@@ -194,13 +195,14 @@ namespace EZPZPOS.MVC.Controllers
             foreach (var guest in service.GetGuestByFullName())
                 guests.Add(
                     new SelectListItem { 
-                        Text = guest.FirstName + " " + guest.LastName,
+                        Text = guest.FirstName + " " + guest.LastName, // Realize I have FullName but wanted to practice concatenation
                         Value = guest.GuestId.ToString() 
                     });
             return guests;
         }
 
-        private List<SelectListItem> AccessMenuItemIdList()
+        // Helper method for MenuItemId dropdown to display with name fo menuItem
+        private List<SelectListItem> AccessMenuIdList()
         {
             var service = new MenuItemService(User.Identity.GetUserId());
             List<SelectListItem> menuItems = new List<SelectListItem>();
@@ -214,7 +216,7 @@ namespace EZPZPOS.MVC.Controllers
             return menuItems;
         }
 
-        //This one below is used in Edit
+        //Helper method below is used in Edit to display the last item ordered by default upon first edit
         private SelectList CallMenuIdList(OrderDetail order)
         {
             //List<SelectListItem> menuItems = new List<SelectListItem>();
