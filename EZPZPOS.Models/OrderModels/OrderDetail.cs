@@ -45,6 +45,10 @@ namespace EZPZPOS.Models.OrderModels
         [Display(Name = "Menu Item ID")]
         public int MenuItemId { get; set; }
 
+        // Trying this just in the model and controller
+        public double ServingsInStock { get; set; }
+        public bool IsAvailable { get; set; }
+
         [Display(Name = "Menu Item Name")]
         public string Name { get; set; }
 

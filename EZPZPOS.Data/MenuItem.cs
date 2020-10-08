@@ -29,7 +29,6 @@ namespace EZPZPOS.Data
         [Range(0.01, 10000.00, ErrorMessage ="Price must be between 0.01 and 10000.00")]
         public decimal Price { get; set; }
 
-        [Required]
         [Display(Name ="Servings In Stock")]
         [Range(0, int.MaxValue, ErrorMessage ="Can't have less than 0")]
         public double ServingsInStock { get; set; }

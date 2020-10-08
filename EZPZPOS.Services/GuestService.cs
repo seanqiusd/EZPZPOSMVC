@@ -12,10 +12,21 @@ namespace EZPZPOS.Services
     public class GuestService
     {
         private readonly string _userId;
+        private readonly ApplicationDbContext _db = new ApplicationDbContext();
 
         public GuestService(string userId)
         {
             _userId = userId;
+        }
+
+        //Trying this
+        public IEnumerable<GuestListItem> GetGuestByFullName()
+        {
+            return _db.Guests.Select(e => new GuestListItem
+            {
+                FirstName = e.FirstName,
+                LastName = e.LastName
+            }).ToList();
         }
 
         // POST -- Create Guest

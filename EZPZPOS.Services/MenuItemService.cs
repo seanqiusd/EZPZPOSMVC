@@ -12,11 +12,34 @@ namespace EZPZPOS.Services
     public class MenuItemService
     {
         private readonly string _userId;
+        private readonly ApplicationDbContext _db = new ApplicationDbContext();
 
         public MenuItemService(string userId)
         {
             _userId = userId;
         }
+
+        // Trying this
+        public IEnumerable<MenuItemListItem> GetMenuItemByName()
+        {
+            return _db.MenuItems.Select(e => new MenuItemListItem
+            {
+                Name = e.Name
+            }).ToList();
+        }
+
+        // Trying this too
+        public IEnumerable<MenuItemDetail> AccessMenuItemId()
+        {
+            return _db.MenuItems.Select(e => new MenuItemDetail
+            {
+                MenuItemId = e.MenuItemId,
+                ServingsInStock = e.ServingsInStock,
+            }).ToList();
+        }
+
+
+
 
         // POST -- Create Menu Item
         public bool CreateMenuItem(MenuItemCreate model)

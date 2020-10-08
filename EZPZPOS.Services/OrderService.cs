@@ -21,6 +21,18 @@ namespace EZPZPOS.Services
             _userId = userId;
         }
 
+
+        //Trying this too
+        public IEnumerable<OrderDetail> AccessMenuItemID()
+        {
+            return _db.MenuItems.Select(e => new OrderDetail
+            {
+                MenuItemId = e.MenuItemId,
+                ServingsInStock = e.ServingsInStock,
+                IsAvailable = e.IsAvailable
+            }).ToList();
+        }
+
         // POST -- Create Order
         public bool CreateOrder(OrderCreate model)
         {
@@ -33,6 +45,7 @@ namespace EZPZPOS.Services
                     MenuItemId = model.MenuItemId,
                     Quantity = model.Quantity,
                     Notes = model.Notes,
+                    
                 };
 
             //Trying 
@@ -42,7 +55,7 @@ namespace EZPZPOS.Services
 
             using (var ctx = new ApplicationDbContext())
             {
-                MenuItem item = ctx.MenuItems.Single(x => x.MenuItemId == model.MenuItemId);
+                var item = ctx.MenuItems.Single(x => x.MenuItemId == model.MenuItemId);
                 if (item.ServingsInStock >= model.Quantity)
                 {
                     item.ServingsInStock -= entity.Quantity; // Trying this out to see if it fixes a bug
