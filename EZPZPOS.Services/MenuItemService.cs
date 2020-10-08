@@ -20,10 +20,12 @@ namespace EZPZPOS.Services
         }
 
         // Trying this
-        public IEnumerable<MenuItemListItem> GetMenuItemByName()
+        public IEnumerable<MenuItemListItem> GetMenuItemList()
         {
+         
             return _db.MenuItems.Select(e => new MenuItemListItem
             {
+                MenuItemId = e.MenuItemId,
                 Name = e.Name
             }).ToList();
         }
@@ -116,7 +118,8 @@ namespace EZPZPOS.Services
                         Description = entity.Description,
                         Category = entity.Category,
                         Price = entity.Price,
-                        ServingsInStock = entity.ServingsInStock
+                        ServingsInStock = entity.ServingsInStock,
+                        IsAvailable = entity.IsAvailable
                     };
             }
         }

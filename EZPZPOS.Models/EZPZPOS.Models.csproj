@@ -66,6 +66,7 @@
     <Compile Include="OrderModels\OrderDetail.cs" />
     <Compile Include="OrderModels\OrderEdit.cs" />
     <Compile Include="OrderModels\OrderListItem.cs" />
+    <Compile Include="OrderModels\OrderMenuItemDetail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

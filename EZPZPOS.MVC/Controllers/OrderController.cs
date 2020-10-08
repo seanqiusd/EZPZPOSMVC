@@ -29,10 +29,11 @@ namespace EZPZPOS.MVC.Controllers
         //GET: Order/Create
         public ActionResult Create()
         {
+            
             // Trying this stuff
             // ViewBag for GuestId and MenuId
-            ViewBag.GuestId = CallGuestIdList();
-            ViewBag.MenuItemId = CallMenuIdList();
+            ViewBag.GuestId = AccessGuestIdList();
+            ViewBag.MenuItemId = AccessMenuItemIdList();
 
             //My stuff that works
             //var guests = new SelectList(_db.Guests.ToList(), "GuestId", "FullName");
@@ -53,7 +54,10 @@ namespace EZPZPOS.MVC.Controllers
             if (!ModelState.IsValid) return View(model);
 
             var service = CreateOrderService();
-            var item = service.AccessMenuItemID();
+            var orderedMenuItemId = model.MenuItemId;
+
+            var item = service.OrderMenuItemDetail(orderedMenuItemId);
+
             if (item.IsAvailable.Equals(false))
             {
                 return HttpNotFound("Sorry, This Item Is Out Of Order At The Moment. Please Select Something Else.");
@@ -96,14 +100,6 @@ namespace EZPZPOS.MVC.Controllers
             //    else
             //        return View(model);
             //}
-
-            //if (service.CreateOrder(model))
-            //{
-            //    TempData["SaveResult"] = "Your Order Was Created.";
-            //    return RedirectToAction("Index");
-            //};
-
-            //return View(model);
         }
 
         // GET: Order/Details/{id}
@@ -122,7 +118,7 @@ namespace EZPZPOS.MVC.Controllers
             var detail = service.GetOrderById(id);
 
             // Trying this
-            ViewBag.MenuItemId = CallMenuIdList();
+            ViewBag.MenuItemId = CallMenuIdList(detail);
 
             //var menuItems = new SelectList(_db.MenuItems.ToList(), "MenuItemId", "Name"); Works, but trying something
             //ViewBag.MenuItems = menuItems;
@@ -191,34 +187,58 @@ namespace EZPZPOS.MVC.Controllers
             return RedirectToAction("Index");
         }
 
-        private List<SelectListItem> CallGuestIdList()
+        private List<SelectListItem> AccessGuestIdList()
         {
             var service = new GuestService(User.Identity.GetUserId());
             List<SelectListItem> guests = new List<SelectListItem>();
             foreach (var guest in service.GetGuestByFullName())
-                guests.Add(new SelectListItem { Text = guest.FirstName + " " + guest.LastName, Value = guest.GuestId.ToString() });
+                guests.Add(
+                    new SelectListItem { 
+                        Text = guest.FirstName + " " + guest.LastName,
+                        Value = guest.GuestId.ToString() 
+                    });
             return guests;
         }
 
-        private List<SelectListItem> CallMenuIdList()
+        private List<SelectListItem> AccessMenuItemIdList()
         {
             var service = new MenuItemService(User.Identity.GetUserId());
             List<SelectListItem> menuItems = new List<SelectListItem>();
-            foreach (var menuItem in service.GetMenuItemByName())
-                menuItems.Add(new SelectListItem { Text = menuItem.Name, Value = menuItem.MenuItemId.ToString() });
+            foreach (var menuItem in service.GetMenuItemList())
+                menuItems.Add(
+                    new SelectListItem
+                    {
+                        Text = menuItem.Name,
+                        Value = menuItem.MenuItemId.ToString()
+                    });
             return menuItems;
         }
 
-        private IEnumerable<OrderDetail> GetMenuItemId()
+        //This one below is used in Edit
+        private SelectList CallMenuIdList(OrderDetail order)
         {
-            var service = new OrderService(User.Identity.GetUserId());
-            var id = service.AccessMenuItemID();
-            return id;
-            //List<SelectListItem> menuItemIds = new List<SelectListItem>();
-            //foreach (var menuItemId in service.GetMenuItemExtraDetail())
-            //    menuItemIds.Add(new SelectListItem { Text = menuItemId.MenuItemId, Value = menuItemId.MenuItemId.ToString() });
-            //return menuItemIds;
+            //List<SelectListItem> menuItems = new List<SelectListItem>();
+           
+            //foreach (var menuItem in service.GetMenuItemByName())
+            //    menuItems.Add(new SelectListItem { Text = menuItem.Name, Value = menuItem.MenuItemId.ToString() });
+            //return menuItems;
+
+
+            // This way is neat. Requires a little bit more coding in the EditView, but much less code, keeping the other two to contrast how else something can be done. It also returns the default ordered value upon edit.
+            var service = new MenuItemService(User.Identity.GetUserId());
+            return new SelectList(service.GetMenuItemList(), "MenuItemId", "Name", order.MenuItemId);
         }
+
+        //private IEnumerable<OrderDetail> GetMenuItemId()
+        //{
+        //    var service = new OrderService(User.Identity.GetUserId());
+        //    var id = service.AccessMenuItemID();
+        //    return id;
+        //    //List<SelectListItem> menuItemIds = new List<SelectListItem>();
+        //    //foreach (var menuItemId in service.GetMenuItemExtraDetail())
+        //    //    menuItemIds.Add(new SelectListItem { Text = menuItemId.MenuItemId, Value = menuItemId.MenuItemId.ToString() });
+        //    //return menuItemIds;
+        //}
 
         private OrderService CreateOrderService()
         {

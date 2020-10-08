@@ -24,5 +24,9 @@ namespace EZPZPOS.Models.MenuItemModels
         [Display(Name = "Servings In Stock")]
         public double ServingsInStock { get; set; }
 
+        [Display(Name = "Is Available")]
+        public bool IsAvailable { get; set; }
+
+
     }
 }

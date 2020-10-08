@@ -1,4 +1,5 @@
 ﻿using EZPZPOS.Data;
+using EZPZPOS.Models.MenuItemModels;
 using EZPZPOS.Models.OrderModels;
 using System;
 using System.Collections.Generic;
@@ -23,14 +24,22 @@ namespace EZPZPOS.Services
 
 
         //Trying this too
-        public IEnumerable<OrderDetail> AccessMenuItemID()
+        public MenuItemDetail OrderMenuItemDetail(int id)
         {
-            return _db.MenuItems.Select(e => new OrderDetail
+            using (var ctx = new ApplicationDbContext())
             {
-                MenuItemId = e.MenuItemId,
-                ServingsInStock = e.ServingsInStock,
-                IsAvailable = e.IsAvailable
-            }).ToList();
+                var entity =
+                    ctx
+                        .MenuItems
+                        .Single(e => e.MenuItemId == id);
+                return
+                        new MenuItemDetail()
+                        {
+                            MenuItemId = entity.MenuItemId,
+                            ServingsInStock = entity.ServingsInStock,
+                            IsAvailable = entity.IsAvailable,
+                        };
+            }
         }
 
         // POST -- Create Order
@@ -45,7 +54,7 @@ namespace EZPZPOS.Services
                     MenuItemId = model.MenuItemId,
                     Quantity = model.Quantity,
                     Notes = model.Notes,
-                    
+
                 };
 
             //Trying 
@@ -144,6 +153,27 @@ namespace EZPZPOS.Services
                         .Orders
                         .Single(e => e.OrderId == model.OrderId);
 
+                MenuItem testingthis = _db.MenuItems.Find(entity.MenuItemId); //change _db to ctx
+                if(model.Quantity > entity.Quantity)
+                {
+                    testingthis.ServingsInStock -= (model.Quantity - entity.Quantity);
+                    //subtract difference from items in storage
+                    if (testingthis.ServingsInStock > 0)
+                        testingthis.IsAvailable = true;
+                    else
+                        testingthis.IsAvailable = false;
+                    _db.SaveChanges();
+                }
+                if (model.Quantity < entity.Quantity)
+                {
+                    testingthis.ServingsInStock += (entity.Quantity - model.Quantity);
+                    //add the difference back
+                    if (testingthis.ServingsInStock > 0)
+                        testingthis.IsAvailable = true;
+                    else
+                        testingthis.IsAvailable = false;
+                    _db.SaveChanges();
+                }
                 entity.TypeOfOrder = model.TypeOfOrder;
                 entity.MenuItemId = model.MenuItemId;
                 entity.Quantity = model.Quantity;
