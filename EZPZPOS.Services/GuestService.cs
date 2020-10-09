@@ -139,7 +139,7 @@ namespace EZPZPOS.Services
                 var entity =
                     ctx
                         .Guests
-                        .Single(e => e.GuestId == guestId && e.ServerId == _userId);
+                        .Single(e => e.GuestId == guestId);
 
                 ctx.Guests.Remove(entity);
 
