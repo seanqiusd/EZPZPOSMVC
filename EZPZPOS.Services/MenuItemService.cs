@@ -12,7 +12,7 @@ namespace EZPZPOS.Services
     public class MenuItemService
     {
         private readonly string _userId;
-        private readonly ApplicationDbContext _db = new ApplicationDbContext();
+        //private readonly ApplicationDbContext _db = new ApplicationDbContext();
 
         public MenuItemService(string userId)
         {

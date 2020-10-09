@@ -151,15 +151,32 @@ namespace EZPZPOS.MVC.Controllers
             }
 
             var service = CreateOrderService();
+            var orderedMenuItemId = model.MenuItemId;
 
-            if (service.UpdateOrder(model))
+            var item = service.OrderMenuItemDetail(orderedMenuItemId);
+
+            if (item.IsAvailable.Equals(false))
             {
-                TempData["SaveResult"] = "Your Order Was Updated.";
-                return RedirectToAction("Index");
+                return HttpNotFound("Sorry, This Item Is Out Of Order At The Moment. Please Select Something Else.");
             }
-
-            ModelState.AddModelError("", "Your Order Could Not Be Updated.");
-            return View(model);
+            else if (item.ServingsInStock < model.Quantity)
+            {
+                return HttpNotFound("Sorry, We Don't Have Enough Of This Item.");
+            }
+            else
+            {
+                if (service.UpdateOrder(model))
+                {
+                    TempData["SaveResult"] = "Your Order Was Updated.";
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Your Order Could Not Be Updated.");
+                    return View(model);
+                }
+            }
+            
         }
 
         // GET: Order/Delete/{id}

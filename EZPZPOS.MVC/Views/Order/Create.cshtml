@@ -34,7 +34,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.TypeOfOrder, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-           @Html.DropDownListFor(o => o.TypeOfOrder, Enum.GetValues(typeof(EZPZPOS.Data.OrderType)).Cast<EZPZPOS.Data.OrderType>().Select(x => new SelectListItem { Text = x.ToString(), Value = ((int)x).ToString() }))
+            @Html.DropDownListFor(o => o.TypeOfOrder, Enum.GetValues(typeof(EZPZPOS.Data.OrderType)).Cast<EZPZPOS.Data.OrderType>().Select(x => new SelectListItem { Text = x.ToString(), Value = ((int)x).ToString() }))
           
             @Html.ValidationMessageFor(model => model.TypeOfOrder, "", new { @class = "text-danger" })
         </div>

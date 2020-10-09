@@ -23,7 +23,7 @@ namespace EZPZPOS.Services
         }
 
 
-        //Trying this too
+        //Helper method for OrderController
         public MenuItemDetail OrderMenuItemDetail(int id)
         {
             using (var ctx = new ApplicationDbContext())
@@ -153,26 +153,26 @@ namespace EZPZPOS.Services
                         .Orders
                         .Single(e => e.OrderId == model.OrderId);
 
-                MenuItem testingthis = _db.MenuItems.Find(entity.MenuItemId); //change _db to ctx
+                MenuItem item = ctx.MenuItems.Find(entity.MenuItemId); //change _db to ctx
                 if(model.Quantity > entity.Quantity)
                 {
-                    testingthis.ServingsInStock -= (model.Quantity - entity.Quantity);
+                    item.ServingsInStock -= (model.Quantity - entity.Quantity);
                     //subtract difference from items in storage
-                    if (testingthis.ServingsInStock > 0)
-                        testingthis.IsAvailable = true;
+                    if (item.ServingsInStock > 0)
+                        item.IsAvailable = true;
                     else
-                        testingthis.IsAvailable = false;
-                    _db.SaveChanges();
+                        item.IsAvailable = false;
+                    ctx.SaveChanges(); //_db.
                 }
                 if (model.Quantity < entity.Quantity)
                 {
-                    testingthis.ServingsInStock += (entity.Quantity - model.Quantity);
+                    item.ServingsInStock += (entity.Quantity - model.Quantity);
                     //add the difference back
-                    if (testingthis.ServingsInStock > 0)
-                        testingthis.IsAvailable = true;
+                    if (item.ServingsInStock > 0)
+                        item.IsAvailable = true;
                     else
-                        testingthis.IsAvailable = false;
-                    _db.SaveChanges();
+                        item.IsAvailable = false;
+                    ctx.SaveChanges(); //_db.
                 }
                 entity.TypeOfOrder = model.TypeOfOrder;
                 entity.MenuItemId = model.MenuItemId;
