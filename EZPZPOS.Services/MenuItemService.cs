@@ -12,11 +12,61 @@ namespace EZPZPOS.Services
     public class MenuItemService
     {
         private readonly string _userId;
+        //private readonly ApplicationDbContext _db = new ApplicationDbContext();
 
         public MenuItemService(string userId)
         {
             _userId = userId;
         }
+
+        // Trying this
+        public IEnumerable<MenuItemListItem> GetMenuItemList()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                    .MenuItems.ToList()
+                    .Select(
+                        e => new MenuItemListItem()
+                        {
+                            MenuItemId = e.MenuItemId,
+                            Name = e.Name
+                        }
+                    );
+
+                return query.ToArray();
+            }
+
+            //return _db.MenuItems.Select(e => new MenuItemListItem
+            //{
+            //    MenuItemId = e.MenuItemId,
+            //    Name = e.Name
+            //}).ToList();
+        }
+
+        // Trying this too
+        //public IEnumerable<MenuItemDetail> AccessMenuItemId()
+        //{
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
+        //        var query =
+        //            ctx
+        //            .MenuItems.ToList()
+        //            .Select(
+        //                e => new MenuItemDetail()
+        //                {
+        //                    MenuItemId = e.MenuItemId,
+        //                    ServingsInStock = e.ServingsInStock,
+        //                }
+        //            );
+
+        //        return query.ToArray();
+        //    }
+        //}
+
+
+
 
         // POST -- Create Menu Item
         public bool CreateMenuItem(MenuItemCreate model)
@@ -93,7 +143,8 @@ namespace EZPZPOS.Services
                         Description = entity.Description,
                         Category = entity.Category,
                         Price = entity.Price,
-                        ServingsInStock = entity.ServingsInStock
+                        ServingsInStock = entity.ServingsInStock,
+                        IsAvailable = entity.IsAvailable
                     };
             }
         }

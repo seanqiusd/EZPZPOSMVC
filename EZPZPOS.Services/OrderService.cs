@@ -1,4 +1,5 @@
 ﻿using EZPZPOS.Data;
+using EZPZPOS.Models.MenuItemModels;
 using EZPZPOS.Models.OrderModels;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,26 @@ namespace EZPZPOS.Services
             _userId = userId;
         }
 
+
+        //Helper method for OrderController
+        public MenuItemDetail OrderMenuItemDetail(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .MenuItems
+                        .Single(e => e.MenuItemId == id);
+                return
+                        new MenuItemDetail()
+                        {
+                            MenuItemId = entity.MenuItemId,
+                            ServingsInStock = entity.ServingsInStock,
+                            IsAvailable = entity.IsAvailable,
+                        };
+            }
+        }
+
         // POST -- Create Order
         public bool CreateOrder(OrderCreate model)
         {
@@ -33,6 +54,7 @@ namespace EZPZPOS.Services
                     MenuItemId = model.MenuItemId,
                     Quantity = model.Quantity,
                     Notes = model.Notes,
+
                 };
 
             //Trying 
@@ -42,7 +64,7 @@ namespace EZPZPOS.Services
 
             using (var ctx = new ApplicationDbContext())
             {
-                MenuItem item = ctx.MenuItems.Single(x => x.MenuItemId == model.MenuItemId);
+                var item = ctx.MenuItems.Single(x => x.MenuItemId == model.MenuItemId);
                 if (item.ServingsInStock >= model.Quantity)
                 {
                     item.ServingsInStock -= entity.Quantity; // Trying this out to see if it fixes a bug
@@ -131,6 +153,27 @@ namespace EZPZPOS.Services
                         .Orders
                         .Single(e => e.OrderId == model.OrderId);
 
+                MenuItem item = ctx.MenuItems.Find(entity.MenuItemId); //change _db to ctx
+                if(model.Quantity > entity.Quantity)
+                {
+                    item.ServingsInStock -= (model.Quantity - entity.Quantity);
+                    //subtract difference from items in storage
+                    if (item.ServingsInStock > 0)
+                        item.IsAvailable = true;
+                    else
+                        item.IsAvailable = false;
+                    ctx.SaveChanges(); //_db.
+                }
+                if (model.Quantity < entity.Quantity)
+                {
+                    item.ServingsInStock += (entity.Quantity - model.Quantity);
+                    //add the difference back
+                    if (item.ServingsInStock > 0)
+                        item.IsAvailable = true;
+                    else
+                        item.IsAvailable = false;
+                    ctx.SaveChanges(); //_db.
+                }
                 entity.TypeOfOrder = model.TypeOfOrder;
                 entity.MenuItemId = model.MenuItemId;
                 entity.Quantity = model.Quantity;

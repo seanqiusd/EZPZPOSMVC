@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Headers;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,10 +13,32 @@ namespace EZPZPOS.Services
     public class GuestService
     {
         private readonly string _userId;
+        //private readonly ApplicationDbContext _db = new ApplicationDbContext(); for n-tier don't do this, using using statements
 
         public GuestService(string userId)
         {
             _userId = userId;
+        }
+
+        //Trying this
+        public IEnumerable<GuestListItem> GetGuestByFullName()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                    .Guests.ToList()
+                    .Select(
+                        e => new GuestListItem()
+                        {
+                            GuestId = e.GuestId,
+                            FirstName = e.FirstName,
+                            LastName = e.LastName
+                        }
+                    );
+
+                return query.ToArray();
+            }
         }
 
         // POST -- Create Guest
@@ -49,7 +72,7 @@ namespace EZPZPOS.Services
                 var query =
                     ctx
                         .Guests
-                        .Where(e => e.ServerId == _userId)
+                        //.Where(e => e.ServerId == _userId) for when I want to return the guests a single server creates
                         .Select(
                             e =>
                                 new GuestListItem
@@ -76,7 +99,7 @@ namespace EZPZPOS.Services
                 var entity =
                     ctx
                         .Guests
-                        .Single(e => e.GuestId == id && e.ServerId == _userId);
+                        .Single(e => e.GuestId == id);
                 return
                     new GuestDetail
                     {
@@ -97,7 +120,7 @@ namespace EZPZPOS.Services
                 var entity =
                     ctx
                         .Guests
-                        .Single(e => e.GuestId == model.GuestId && e.ServerId == _userId);
+                        .Single(e => e.GuestId == model.GuestId);
 
                 entity.FirstName = model.FirstName;
                 entity.LastName = model.LastName;
@@ -116,7 +139,7 @@ namespace EZPZPOS.Services
                 var entity =
                     ctx
                         .Guests
-                        .Single(e => e.GuestId == guestId && e.ServerId == _userId);
+                        .Single(e => e.GuestId == guestId);
 
                 ctx.Guests.Remove(entity);
 

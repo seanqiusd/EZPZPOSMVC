@@ -117,6 +117,10 @@
     <Compile Include="Migrations\202010051923546_DataClassUpdatedSomeAttributes.Designer.cs">
       <DependentUpon>202010051923546_DataClassUpdatedSomeAttributes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010080732114_MenuItemDataServingsInStockAnnotationModified.cs" />
+    <Compile Include="Migrations\202010080732114_MenuItemDataServingsInStockAnnotationModified.Designer.cs">
+      <DependentUpon>202010080732114_MenuItemDataServingsInStockAnnotationModified.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -170,6 +174,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010051923546_DataClassUpdatedSomeAttributes.resx">
       <DependentUpon>202010051923546_DataClassUpdatedSomeAttributes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010080732114_MenuItemDataServingsInStockAnnotationModified.resx">
+      <DependentUpon>202010080732114_MenuItemDataServingsInStockAnnotationModified.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

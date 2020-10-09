@@ -1,10 +1,12 @@
 ﻿using EZPZPOS.Data;
+using EZPZPOS.Data.Migrations;
 using EZPZPOS.Models.OrderModels;
 using EZPZPOS.Services;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Web;
 using System.Web.Mvc;
 
@@ -13,7 +15,7 @@ namespace EZPZPOS.MVC.Controllers
     [Authorize]
     public class OrderController : Controller
     {
-        private ApplicationDbContext _db = new ApplicationDbContext();
+        //private ApplicationDbContext _db = new ApplicationDbContext();
         // GET: Order
         public ActionResult Index()
         {
@@ -27,14 +29,18 @@ namespace EZPZPOS.MVC.Controllers
         //GET: Order/Create
         public ActionResult Create()
         {
-            var guests = new SelectList(_db.Guests.ToList(), "GuestId", "FullName");
-            ViewBag.Guests = guests;
+            
+            // Trying this stuff
+            // ViewBag for GuestId and MenuId
+            ViewBag.GuestId = AccessGuestIdList();
+            ViewBag.MenuItemId = AccessMenuIdList();
 
-            //var kindOfOrders = new SelectList(_db.Orders.ToList(), "TypeOfOrder", "TypeOfOrder");
-            //ViewBag.Orders = kindOfOrders; This for some reason will display the very highest position enum twice and that's it
+            //My stuff that works
+            //var guests = new SelectList(_db.Guests.ToList(), "GuestId", "FullName");
+            //ViewBag.Guests = guests;
 
-            var menuItems = new SelectList(_db.MenuItems.ToList(), "MenuItemId", "Name");
-            ViewBag.MenuItems = menuItems;
+            //var menuItems = new SelectList(_db.MenuItems.ToList(), "MenuItemId", "Name");
+            //ViewBag.MenuItems = menuItems;
 
 
             return View();
@@ -48,9 +54,10 @@ namespace EZPZPOS.MVC.Controllers
             if (!ModelState.IsValid) return View(model);
 
             var service = CreateOrderService();
+            var orderedMenuItemId = model.MenuItemId;
 
-            // Trying something
-            MenuItem item = _db.MenuItems.Find(model.MenuItemId);
+            var item = service.OrderMenuItemDetail(orderedMenuItemId);
+
             if (item.IsAvailable.Equals(false))
             {
                 return HttpNotFound("Sorry, This Item Is Out Of Order At The Moment. Please Select Something Else.");
@@ -67,8 +74,32 @@ namespace EZPZPOS.MVC.Controllers
                     return RedirectToAction("Index");
                 }
                 else
+                {
                     return View(model);
+                }
             }
+
+
+
+            //MenuItem item = _db.MenuItems.Find(model.MenuItemId); This Works
+            //if (item.IsAvailable.Equals(false))
+            //{
+            //    return HttpNotFound("Sorry, This Item Is Out Of Order At The Moment. Please Select Something Else.");
+            //}
+            //else if (item.ServingsInStock < model.Quantity)
+            //{
+            //    return HttpNotFound("Sorry, We Don't Have Enough Of This Item.");
+            //}
+            //else
+            //{
+            //    if (service.CreateOrder(model))
+            //    {
+            //        TempData["SaveResult"] = "Your Order Was Created.";
+            //        return RedirectToAction("Index");
+            //    }
+            //    else
+            //        return View(model);
+            //}
         }
 
         // GET: Order/Details/{id}
@@ -86,8 +117,11 @@ namespace EZPZPOS.MVC.Controllers
             var service = CreateOrderService();
             var detail = service.GetOrderById(id);
 
-            var menuItems = new SelectList(_db.MenuItems.ToList(), "MenuItemId", "Name");
-            ViewBag.MenuItems = menuItems;
+            // Trying this
+            ViewBag.MenuItemId = CallMenuIdList(detail);
+
+            //var menuItems = new SelectList(_db.MenuItems.ToList(), "MenuItemId", "Name"); Works, but trying something
+            //ViewBag.MenuItems = menuItems;
 
             var model =
                 new OrderEdit
@@ -117,15 +151,32 @@ namespace EZPZPOS.MVC.Controllers
             }
 
             var service = CreateOrderService();
+            var orderedMenuItemId = model.MenuItemId;
 
-            if (service.UpdateOrder(model))
+            var item = service.OrderMenuItemDetail(orderedMenuItemId);
+
+            if (item.IsAvailable.Equals(false))
             {
-                TempData["SaveResult"] = "Your Order Was Updated.";
-                return RedirectToAction("Index");
+                return HttpNotFound("Sorry, This Item Is Out Of Order At The Moment. Please Select Something Else.");
             }
-
-            ModelState.AddModelError("", "Your Order Could Not Be Updated.");
-            return View(model);
+            else if (item.ServingsInStock < model.Quantity)
+            {
+                return HttpNotFound("Sorry, We Don't Have Enough Of This Item.");
+            }
+            else
+            {
+                if (service.UpdateOrder(model))
+                {
+                    TempData["SaveResult"] = "Your Order Was Updated.";
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Your Order Could Not Be Updated.");
+                    return View(model);
+                }
+            }
+            
         }
 
         // GET: Order/Delete/{id}
@@ -153,7 +204,60 @@ namespace EZPZPOS.MVC.Controllers
             return RedirectToAction("Index");
         }
 
+        // Helper method for GuestId Dropdown to display with first and last name
+        private List<SelectListItem> AccessGuestIdList()
+        {
+            var service = new GuestService(User.Identity.GetUserId());
+            List<SelectListItem> guests = new List<SelectListItem>();
+            foreach (var guest in service.GetGuestByFullName())
+                guests.Add(
+                    new SelectListItem { 
+                        Text = guest.FirstName + " " + guest.LastName, // Realize I have FullName but wanted to practice concatenation
+                        Value = guest.GuestId.ToString() 
+                    });
+            return guests;
+        }
 
+        // Helper method for MenuItemId dropdown to display with name fo menuItem
+        private List<SelectListItem> AccessMenuIdList()
+        {
+            var service = new MenuItemService(User.Identity.GetUserId());
+            List<SelectListItem> menuItems = new List<SelectListItem>();
+            foreach (var menuItem in service.GetMenuItemList())
+                menuItems.Add(
+                    new SelectListItem
+                    {
+                        Text = menuItem.Name,
+                        Value = menuItem.MenuItemId.ToString()
+                    });
+            return menuItems;
+        }
+
+        //Helper method below is used in Edit to display the last item ordered by default upon first edit
+        private SelectList CallMenuIdList(OrderDetail order)
+        {
+            //List<SelectListItem> menuItems = new List<SelectListItem>();
+           
+            //foreach (var menuItem in service.GetMenuItemByName())
+            //    menuItems.Add(new SelectListItem { Text = menuItem.Name, Value = menuItem.MenuItemId.ToString() });
+            //return menuItems;
+
+
+            // This way is neat. Requires a little bit more coding in the EditView, but much less code, keeping the other two to contrast how else something can be done. It also returns the default ordered value upon edit.
+            var service = new MenuItemService(User.Identity.GetUserId());
+            return new SelectList(service.GetMenuItemList(), "MenuItemId", "Name", order.MenuItemId);
+        }
+
+        //private IEnumerable<OrderDetail> GetMenuItemId()
+        //{
+        //    var service = new OrderService(User.Identity.GetUserId());
+        //    var id = service.AccessMenuItemID();
+        //    return id;
+        //    //List<SelectListItem> menuItemIds = new List<SelectListItem>();
+        //    //foreach (var menuItemId in service.GetMenuItemExtraDetail())
+        //    //    menuItemIds.Add(new SelectListItem { Text = menuItemId.MenuItemId, Value = menuItemId.MenuItemId.ToString() });
+        //    //return menuItemIds;
+        //}
 
         private OrderService CreateOrderService()
         {
