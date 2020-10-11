@@ -23,21 +23,21 @@
 
 <table class="table">
     <tr>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.GuestId)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ServerId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.LastName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ContactNumber)
+            @Html.DisplayNameFor(model => model.FirstName)
         </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.ContactNumber)
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.FirstTime)
         </th>
@@ -46,31 +46,31 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.GuestId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ServerId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ContactNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstTime)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.GuestId }) |
-                @Html.ActionLink("Guest Details", "Details", new { id = item.GuestId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.GuestId })
-            </td>
-        </tr>
+<tr>
+    @*<td>
+            @Html.DisplayFor(modelItem => item.GuestId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ServerId)
+        </td>*@
+    <td>
+        @Html.DisplayFor(modelItem => item.LastName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FirstName)
+    </td>
+    @*<td>
+            @Html.DisplayFor(modelItem => item.ContactNumber)
+        </td>*@
+    <td>
+        @Html.DisplayFor(modelItem => item.FirstTime)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.GuestId }) |
+        @Html.ActionLink("Guest Details", "Details", new { id = item.GuestId }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.GuestId })
+    </td>
+</tr>
     }
 
 </table>

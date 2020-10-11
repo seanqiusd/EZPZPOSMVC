@@ -107,6 +107,7 @@ namespace EZPZPOS.Services
                         FirstName = entity.FirstName,
                         LastName = entity.LastName,
                         ContactNumber = entity.ContactNumber,
+                        FullAddress = entity.FullAddress,
                         Notes = entity.Notes
                     };
             }
@@ -125,6 +126,7 @@ namespace EZPZPOS.Services
                 entity.FirstName = model.FirstName;
                 entity.LastName = model.LastName;
                 entity.ContactNumber = model.ContactNumber;
+                entity.FullAddress = model.FullAddress;
                 entity.Notes = model.Notes;
        
                 return ctx.SaveChanges() == 1;

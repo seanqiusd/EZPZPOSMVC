@@ -23,6 +23,9 @@ namespace EZPZPOS.Models.GuestModels
         [Display(Name = "Phone Number")]
         public string ContactNumber { get; set; }
 
+        [Display(Name = "Address")]
+        public string FullAddress { get; set; }
+
         public string Notes { get; set; }
 
 

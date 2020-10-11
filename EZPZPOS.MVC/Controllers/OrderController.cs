@@ -209,7 +209,7 @@ namespace EZPZPOS.MVC.Controllers
         {
             var service = new GuestService(User.Identity.GetUserId());
             List<SelectListItem> guests = new List<SelectListItem>();
-            foreach (var guest in service.GetGuestByFullName())
+            foreach (var guest in service.GetGuestByFullName().OrderBy(g => g.LastName))
                 guests.Add(
                     new SelectListItem { 
                         Text = guest.FirstName + " " + guest.LastName, // Realize I have FullName but wanted to practice concatenation
@@ -223,7 +223,7 @@ namespace EZPZPOS.MVC.Controllers
         {
             var service = new MenuItemService(User.Identity.GetUserId());
             List<SelectListItem> menuItems = new List<SelectListItem>();
-            foreach (var menuItem in service.GetMenuItemList())
+            foreach (var menuItem in service.GetMenuItemList().OrderBy(m => m.Name))
                 menuItems.Add(
                     new SelectListItem
                     {
@@ -233,7 +233,7 @@ namespace EZPZPOS.MVC.Controllers
             return menuItems;
         }
 
-        //Helper method below is used in Edit to display the last item ordered by default upon first edit
+        //Helper method below is used in Get Order Edit to display the last item ordered by default upon first edit
         private SelectList CallMenuIdList(OrderDetail order)
         {
             //List<SelectListItem> menuItems = new List<SelectListItem>();
@@ -245,7 +245,7 @@ namespace EZPZPOS.MVC.Controllers
 
             // This way is neat. Requires a little bit more coding in the EditView, but much less code, keeping the other two to contrast how else something can be done. It also returns the default ordered value upon edit.
             var service = new MenuItemService(User.Identity.GetUserId());
-            return new SelectList(service.GetMenuItemList(), "MenuItemId", "Name", order.MenuItemId);
+            return new SelectList(service.GetMenuItemList().OrderBy(m => m.Name), "MenuItemId", "Name", order.MenuItemId);
         }
 
         //private IEnumerable<OrderDetail> GetMenuItemId()
