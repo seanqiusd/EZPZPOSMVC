@@ -75,6 +75,11 @@ namespace EZPZPOS.MVC.Controllers
                 }
                 else
                 {
+                    ViewBag.GuestId = AccessGuestIdList();
+                    ViewBag.MenuItemId = AccessMenuIdList();
+
+                    ModelState.AddModelError("", "Your Order Could Not Be Created.");
+
                     return View(model);
                 }
             }

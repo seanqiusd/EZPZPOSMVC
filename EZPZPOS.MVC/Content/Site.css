@@ -109,12 +109,12 @@ textarea {
 /*ActionLink styling*/
 
 .my-actionLink a {
-    color: orange;
+    color: darkorange;
     text-decoration: none;
 }
 
 .my-actionLink a:hover {
-    color: darkorange;
+    color: darkred;
 }
 
 /*ActionLink styling For Order List/Index*/
@@ -124,7 +124,7 @@ textarea {
 }
 
 .my-actionLinkTwo a:hover {
-    color: darkblue;
+    color: darkred;
 }
 
 
@@ -149,6 +149,9 @@ textarea {
     background-color: rgba(0, 0, 0, 0.6);
     color: white; /*text white*/
     border-radius: .5rem;
+    margin-top: 15px;
+    margin-right: 10px;
+    padding-bottom: 10px;
 }
 /*min-height: 5em;*/
 #card-border {
@@ -228,6 +231,13 @@ guest-container {
 .guest-card-options {
     /* float: right;*/
 }
+
+/*Menu Item Index Styling*/
+#menu-itemIndex {
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: .5rem;
+}
+
 
 
 /*Order Index*/

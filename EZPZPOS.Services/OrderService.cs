@@ -73,14 +73,18 @@ namespace EZPZPOS.Services
                     item.IsAvailable = true; // Trying this
                 else
                     item.IsAvailable = false;
-                
+
                 // Updating guests so that after first order they're no longer first time
-                //var guest = ctx.Guests.Single(g => g.GuestId == model.GuestId);
-                //if (guest.FirstTime)
-                //    guest.FirstTime = false;
+                var guest = ctx.Guests.Single(g => g.GuestId == model.GuestId);
+                if (guest.FirstTime)
+                    guest.FirstTime = false;
 
                 ctx.Orders.Add(entity);
-                return ctx.SaveChanges() == 2;
+                int save = ctx.SaveChanges(); // Need 2 different instances of changes bc one could come from existing guest and another from new guest. If existing guest, then save == 2 changes, and if new guest save == 3
+                if (save == 2 || save == 3)
+                    return true;
+                else
+                    return false;
             }
         }
 
