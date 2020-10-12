@@ -1,15 +1,15 @@
 ﻿@model EZPZPOS.Models.GuestModels.GuestDetail
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Guest Details";
 }
 
-<h2>Details</h2>
+<h2 style="text-align: center; font-weight: bolder; color: white;">Guest Detail</h2>
 
 <div>
-    <h4>GuestDetail</h4>
+    @*<h4>GuestDetail</h4>*@
     <hr />
-    <dl class="dl-horizontal">
+    <dl class="dl-horizontal" style="font-weight: bolder; color: white;">
         <dt>
             @Html.DisplayNameFor(model => model.GuestId)
         </dt>
@@ -43,6 +43,14 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.FullAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FullAddress)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Notes)
         </dt>
 
@@ -53,7 +61,7 @@
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.GuestId }) |
+<p class="my-actionLink" style="color: white;">
+    @Html.ActionLink("Edit Guest", "Edit", new { id = Model.GuestId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

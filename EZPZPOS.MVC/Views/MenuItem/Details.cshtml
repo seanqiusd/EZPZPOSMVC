@@ -1,15 +1,15 @@
 ﻿@model EZPZPOS.Models.MenuItemModels.MenuItemDetail
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Menu Item Details";
 }
 
-<h2>Menu Item Details</h2>
+<h2 style="text-align: center; font-weight: bolder; color: white;">Menu Item Detail</h2>
 
 <div>
-    <h4>MenuItemDetail</h4>
+    @*<h4>MenuItemDetail</h4>*@
     <hr />
-    <dl class="dl-horizontal">
+    <dl class="dl-horizontal" style="font-weight: bolder; color: white;">
         <dt>
             @Html.DisplayNameFor(model => model.MenuItemId)
         </dt>
@@ -61,7 +61,7 @@
 
     </dl>
 </div>
-<p>
+<p class="my-actionLink" style="color: white;">
     @Html.ActionLink("Edit Menu Item", "Edit", new { id = Model.MenuItemId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

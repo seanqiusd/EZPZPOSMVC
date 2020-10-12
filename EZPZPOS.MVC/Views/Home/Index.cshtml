@@ -3,11 +3,17 @@
 }
 
 <div class="jumbotron-styling">
-    <h1>Pho Maison</h1>
-    <p class="lead">Welcome To Your EZPZ Point of Sales Central Hub! </p>
-    <p>@Html.ActionLink("Create Order", "Create", "Order", null, new { @class = "btn btn-primary btn-large" })</p>
-    <p>@Html.ActionLink("Check Order", "Index", "Order", null, new { @class = "btn btn-primary btn-large" })</p>
-    @*<p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>*@
+    <div style="text-align: center;">
+        <h1 style="font-size: 50px; color: darkorange !important;">Pho Maison</h1>
+        <p class="lead">Welcome To Your EZPZ POS Central Hub! </p>
+        <div>
+            <p>@Html.ActionLink("Create Order", "Create", "Order", null, new { @class = "btn button-color" })</p>
+            <p>@Html.ActionLink("Check Order", "Index", "Order", null, new { @class = "btn button-color" })</p>
+            @*<p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>*@
+        </div>
+
+    </div>
+
 </div>
 <div class="container">
 
@@ -27,69 +33,73 @@
         </div>*@
 
     <div class="card-columns">
-        <div class="col-md-4" style="width: 370px;">
-            <h2>Menu Items</h2>
-            <div class="text-center">
-                <img id="card-img" style="height:60px;" src="data:image/png;base64,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" class="img-circle" />
-            </div>
-            <div class="text-capitalize">
-                <p style="width:311px; margin-left:9px;">
-                    1. To place an order, please make sure you have the your menu items in the database or create new menu items.
-                </p>
-                @*<p class="btn-group-sm col-sm-1" style="height: 30px; width: 50px; align-items: center; background-color: darkorange; color: white;">@Html.ActionLink("See Guests", "Index", "Guest", null, new { @class = "btn btn-primary" })</p>*@
-                <p class="btn-group-justified col-sm-1">@Html.ActionLink("See Menu Items", "Index", "MenuItem", null, new { @class = "btn btn-primary" })</p>
+        <div class="col-md-4 bg-custom" style="width: 370px;">
+            @*<div class="bg-custom">*@
+                <h2>Menu Items</h2>
+                <div class="text-center">
+                    <img id="card-img" style="height:60px;" src="data:image/png;base64,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" class="img-circle" />
+                </div>
+                <div class="text-capitalize">
+                    <p style="width:311px; margin-left:9px;">
+                        1. To place an order, please make sure you have your menu items in the database or create new menu items.
+                    </p>
+                    @*<p class="btn-group-sm col-sm-1" style="height: 30px; width: 50px; align-items: center; background-color: darkorange; color: white;">@Html.ActionLink("See Guests", "Index", "Guest", null, new { @class = "btn btn-primary" })</p>*@
+                    <p class="btn-group-justified col-sm-1">@Html.ActionLink("See Menu Items", "Index", "MenuItem", null, new { @class = "btn button-color" })</p>
 
-                @*<a href="https://localhost:44338/Guest/Create" class="btn btn-sm" style="align-items: center; background-color: darkorange; color: white;">Create Guests</a>*@
+                    @*<a href="https://localhost:44338/Guest/Create" class="btn btn-sm" style="align-items: center; background-color: darkorange; color: white;">Create Guests</a>*@
 
-                <p class="btn-group-justified col-sm-1">@Html.ActionLink("Create Menu Items", "Create", "MenuItem", null, new { @class = "btn btn-info" })</p>
-                @*<p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>*@
-            </div>
-        </div>
-    </div>
-
-
-
-
-    <div class="card-columns">
-        <div class="col-md-4" style="width: 370px;">
-            <h2>Guests</h2>
-            <div class="text-center">
-                <img id="card-img" style="height:60px;" src="https://www.pngitem.com/pimgs/m/279-2799324_transparent-guest-png-become-a-member-svg-icon.png" class="img-circle" />
-            </div>
-            <div class="text-capitalize text-center">
-                <p style="width:310px; margin-left:9px;">
-                    2. To place an order, please make sure you have the guest in the database or create a new guest.
-                </p>
-                @*<p class="btn-group-sm col-sm-1" style="height: 30px; width: 50px; align-items: center; background-color: darkorange; color: white;">@Html.ActionLink("See Guests", "Index", "Guest", null, new { @class = "btn btn-primary" })</p>*@
-                <p class="btn-group-justified col-sm-1">@Html.ActionLink("See Guests", "Index", "Guest", null, new { @class = "btn btn-primary" })</p>
-
-                @*<a href="https://localhost:44338/Guest/Create" class="btn btn-sm" style="align-items: center; background-color: darkorange; color: white;">Create Guests</a>*@
-
-                <p class="btn-group-justified col-sm-1">@Html.ActionLink("Create Guests", "Create", "Guest", null, new { @class = "btn btn-info" })</p>
-                @*<p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>*@
-            </div>
+                    <p class="btn-group-justified col-sm-1">@Html.ActionLink("Create Menu Items", "Create", "MenuItem", null, new { @class = "btn button-color" })</p>
+                    @*<p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>*@
+                </div>
+            @*</div>*@
         </div>
     </div>
 
 
     <div class="card-columns">
-        <div class="col-md-4" style="width: 370px;">
-            <h2>Orders</h2>
-            <div class="text-center">
-                <img id="card-img" style="height:60px;" src="https://cdn.onlinewebfonts.com/svg/img_122068.png" class="img-circle" />
-            </div>
-            <div class="text-capitalize text-center">
-                <p style="width:310px; margin-left:9px;">
-                    3. To place an order, please make sure you've created menu items and that your guest is in the database.
-                </p>
-                @*<p class="btn-group-sm col-sm-1" style="height: 30px; width: 50px; align-items: center; background-color: darkorange; color: white;">@Html.ActionLink("See Guests", "Index", "Guest", null, new { @class = "btn btn-primary" })</p>*@
-                <p class="btn-group-justified col-sm-1">@Html.ActionLink("See Orders", "Index", "Order", null, new { @class = "btn btn-primary" })</p>
+        <div class="col-md-4 bg-custom" style="width: 370px;">
+            @*<div class="bg-custom">*@
+                <h2>Guests</h2>
+                <div class="text-center">
+                    <img id="card-img" style="height:60px;" src="https://www.pngitem.com/pimgs/m/279-2799324_transparent-guest-png-become-a-member-svg-icon.png" class="img-circle" />
+                </div>
+                <div class="text-capitalize text-center">
+                    <p style="width:310px; margin-left:9px;">
+                        2. To place an order, please make sure you have the guest in the database or create a new guest.
+                    </p>
+                    @*<p class="btn-group-sm col-sm-1" style="height: 30px; width: 50px; align-items: center; background-color: darkorange; color: white;">@Html.ActionLink("See Guests", "Index", "Guest", null, new { @class = "btn btn-primary" })</p>*@
+                    <p class="btn-group-justified col-sm-1">@Html.ActionLink("See Guests", "Index", "Guest", null, new { @class = "btn button-color" })</p>
 
-                @*<a href="https://localhost:44338/Guest/Create" class="btn btn-sm" style="align-items: center; background-color: darkorange; color: white;">Create Guests</a>*@
+                    @*<a href="https://localhost:44338/Guest/Create" class="btn btn-sm" style="align-items: center; background-color: darkorange; color: white;">Create Guests</a>*@
 
-                <p class="btn-group-justified col-sm-1">@Html.ActionLink("Place Orders", "Create", "Order", null, new { @class = "btn btn-info" })</p>
-                @*<p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>*@
-            </div>
+                    <p class="btn-group-justified col-sm-1">@Html.ActionLink("Create Guests", "Create", "Guest", null, new { @class = "btn button-color" })</p>
+                    @*<p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>*@
+                </div>
+            @*</div>*@
+        </div>
+    </div>
+
+
+    <div class="card-columns">
+        <div class="col-md-4 bg-custom" style="width: 370px;">
+            @*<div class="bg-custom">*@
+                <h2>Orders</h2>
+                <div class="text-center">
+                    <img id="card-img" style="height:60px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQeyShPI_9TfmxCvDbzKac2Er1SSX8uwTD8GA&usqp=CAU" class="img-circle" />
+                </div>
+                <div class="text-capitalize text-center">
+                    <p style="width:310px; margin-left:9px;">
+                        3. To place an order, please make sure you've created menu items and that your guest is in the database.
+                    </p>
+                    @*<p class="btn-group-sm col-sm-1" style="height: 30px; width: 50px; align-items: center; background-color: darkorange; color: white;">@Html.ActionLink("See Guests", "Index", "Guest", null, new { @class = "btn btn-primary" })</p>*@
+                    <p class="btn-group-justified col-sm-1">@Html.ActionLink("See Orders", "Index", "Order", null, new { @class = "btn button-color" })</p>
+
+                    @*<a href="https://localhost:44338/Guest/Create" class="btn btn-sm" style="align-items: center; background-color: darkorange; color: white;">Create Guests</a>*@
+
+                    <p class="btn-group-justified col-sm-1">@Html.ActionLink("Place Orders", "Create", "Order", null, new { @class = "btn button-color" })</p>
+                    @*<p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>*@
+                </div>
+            @*</div>*@
         </div>
     </div>
 

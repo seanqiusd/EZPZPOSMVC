@@ -3,7 +3,8 @@
     padding-bottom: 20px;
     /*Trying stuff*/
     /*For the view part of this make sure to go to SharedViewLayout.cshtml and make sure to put in or include line 7*/
-    background: url(https://33.media.tumblr.com/2e78093bc84f72e873f4acf1d2d93102/tumblr_ncr7x8hKBG1tf8vylo1_500.png);
+    /*background: url(https://33.media.tumblr.com/2e78093bc84f72e873f4acf1d2d93102/tumblr_ncr7x8hKBG1tf8vylo1_500.png);*/
+    background-image: url('Assets/stone backdrop.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: initial;
@@ -13,7 +14,34 @@
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    /*color: white;*/
 }
+
+/*Navbar styling*/
+.navbar {
+    background-color: darkorange;
+    border: none !important;
+}
+
+.navbar.navbar-inverse.navbar-fixed-top li a {
+    color: white !important; /*Smaller navbar options text styling*/
+}
+
+.navbar.navbar-inverse.navbar-fixed-top li a:hover {
+    color: slategray !important; /*Smaller navbar hover color styling*/
+}
+
+.navbar-brand {
+    color: white !important; /*Pho Maison Brand title styling*/
+    /*font-size: 20px !important;*/
+}
+
+.navbar-brand:hover {
+    color: slategray !important; /*Pho Maison Brand title hover styling*/
+}
+
+
+
 
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
@@ -33,14 +61,73 @@ textarea {
 /*Ben helped me with this this adds your asset folder image*/
 .jumbotron-styling {
     /*background-image: url("Assets/Tesla.jpg");*/
-    background: url(https://images.pexels.com/photos/98874/pexels-photo-98874.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500);
+    /*background: url(https://images.pexels.com/photos/98874/pexels-photo-98874.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500);*/
+    background-image: url('Assets/AsianFusionMainPic.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     height: 300px;
     padding: 30px 30px 20px 30px;
     box-shadow: 20px 10px 8px #000000;
+    object-fit: contain;
+    color: ghostwhite;
 }
+
+/*Buttons in jumbotron styling*/
+.button-color {
+    background-color: orange !important;
+    font-size: 14px;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: white;
+}
+
+
+#buttonColor.button-font {
+    /*  color: white !important;*/
+}
+
+
+.button-font {
+}
+
+/*ActionLink styling*/
+
+.my-actionLink a {
+    color: darkorange;
+    text-decoration: none;
+}
+
+.my-actionLink a:hover {
+    color: darkred;
+}
+
+/*ActionLink styling For Order List/Index*/
+.my-actionLinkTwo a {
+    color: blue;
+    text-decoration: none;
+}
+
+.my-actionLinkTwo a:hover {
+    color: darkred;
+}
+
+
 
 /*
     Stuff I'm trying out
@@ -50,34 +137,46 @@ textarea {
 }
 
 .card-columns {
-    /*  border: thick;
-    border-color: aqua;*/
-    /*outline: 12px solid black;*/
+   /* background-color: 0, 0, 0, .43;
+    z-index: -1;
+    color: black;
+    border-radius: 1rem;*/
 }
 
+
+/*Index Homepage bottom 3 icons*/
+.bg-custom {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white; /*text white*/
+    border-radius: .5rem;
+    margin-top: 15px;
+    margin-right: 10px;
+    padding-bottom: 10px;
+}
+/*min-height: 5em;*/
 #card-border {
     /*  border: thick;
     border-color: aqua;*/
 }
 
-.card-columns .card:hover .card-img {
+/*.card-columns .card:hover .card-img {
     opacity: 1;
-}
+}*/
 
-.card-columns .card-body {
+/*.card-columns .card-body {
     height: 100px;
     font-family: 'Nunito', sans-serif;
     background: #fbfafd;
-}
+}*/
 
-.card-columns .card-img {
+/*.card-columns .card-img {
     height: 20px;
     vertical-align: bottom;
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Do not repeat the image */
-    background-size: cover; /* Resize the background image to cover the entire container */
-    opacity: .8;
-}
+    background-position: center;*/ /* Center the image */
+    /*background-repeat: no-repeat;*/ /* Do not repeat the image */
+    /*background-size: cover;*/ /* Resize the background image to cover the entire container */
+    /*opacity: 1;
+}*/
 
 #card-img {
     height: 20px;
@@ -88,15 +187,61 @@ textarea {
     opacity: .8;
 }
 
-.modal .card-img {
+/*.modal .card-img {
     height: 500px;
     vertical-align: bottom;
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Do not repeat the image */
-    background-size: cover; /* Resize the background image to cover the entire container */
-}
+    background-position: center;*/ /* Center the image */
+    /*background-repeat: no-repeat;*/ /* Do not repeat the image */
+    /*background-size: cover;*/ /* Resize the background image to cover the entire container */
+/*}*/
 
-.card-columns .card:hover {
+/*.card-columns .card:hover {
     transform: scale(1.05);
     box-shadow: 0 10px 20px rgba(37,33,82,.12), 0 4px 8px rgba(37,33,82,.06);
+}*/
+
+
+/*
+    Styling stuff for me
+*/
+
+/*Guest Index*/
+guest-container {
+    padding: 1em;
+}
+
+.guest-card {
+    /*border: solid 1px black;*/
+    margin: 1em 1em;
+    padding: .50em;
+    /*background-color: papayawhip;*/
+    background-image: url('Assets/GuestCardPaperSeamLess.jpg');
+    box-shadow: 8px 8px 10px;
+}
+
+.guest-property {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.guest-info {
+    font-size: 16px;
+}
+
+.guest-card-options {
+    /* float: right;*/
+}
+
+/*Menu Item Index Styling*/
+#menu-itemIndex {
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: .5rem;
+}
+
+
+
+/*Order Index*/
+.order-tableIndex {
+    /*background-image: url('assets/seamlesscork.jpg');*/
+    background-color: darkorange;
 }

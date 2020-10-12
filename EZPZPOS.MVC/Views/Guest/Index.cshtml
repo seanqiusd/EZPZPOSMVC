@@ -1,18 +1,20 @@
 ﻿@model IEnumerable<EZPZPOS.Models.GuestModels.GuestListItem>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Guest Index";
 }
 
-<h2>List Of Guests</h2>
+<h2 class="col-md-12" style="text-align: center; font-weight: bolder; color: white;">Guests</h2>
 
-<p>
+@*<p class="col-md-12" style="text-align: right; font-size: 16px;">
     @Html.ActionLink("Create New Guest", "Create")
-</p>
+</p>*@
+
+<p class="col-md-12" style="text-align: right; font-size: 16px;">@Html.ActionLink("Create New Guest", "Create", "Guest", null, new { @class = "btn button-color" })</p>
 
 @if (TempData.ContainsKey("SaveResult"))
 {
-    <div class="alert alert-success fade in" role="alert">
+    <div class="alert alert-success fade in col-md-12" role="alert">
 
         <button type="button" class="close" data-dismiss="alert">
             <span>&times;</span>
@@ -21,56 +23,102 @@
     </div>
 }
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.GuestId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ServerId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LastName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ContactNumber)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FirstTime)
-        </th>
-        <th></th>
-    </tr>
+@*<table class="table">
+        <tr>
+            <th>
+                    @html.displaynamefor(model => model.guestid)
+                </th>
+                <th>
+                    @html.displaynamefor(model => model.serverid)
+                </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                    @Html.DisplayNameFor(model => model.ContactNumber)
+                </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstTime)
+            </th>
+            <th></th>
+        </tr>
 
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                        @Html.DisplayFor(modelItem => item.GuestId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ServerId)
+                    </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                        @Html.DisplayFor(modelItem => item.ContactNumber)
+                    </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstTime)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.GuestId }) |
+                    @Html.ActionLink("Guest Details", "Details", new { id = item.GuestId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.GuestId })
+                </td>
+            </tr>
+        }
+    </table>*@
+
+<div class="row">
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.GuestId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ServerId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ContactNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstTime)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.GuestId }) |
-                @Html.ActionLink("Guest Details", "Details", new { id = item.GuestId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.GuestId })
-            </td>
-        </tr>
-    }
+        <div class="col-md-4 guest-container">
+            <div class="guest-card">
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.GuestId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ServerId)
+                    </td>*@
 
-</table>
+                <div class="guest-property">
+                    @Html.DisplayNameFor(model => model.LastName)
+                </div>
+                <div class="guest-info">
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </div>
+                <div class="guest-property">
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </div>
+                <div class="guest-info">
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </div>
+
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.ContactNumber)
+                    </td>*@
+                <div class="guest-property">
+                    @Html.DisplayNameFor(model => model.FirstTime)
+                </div>
+                <div class="guest-info">
+                    @*@Html.DisplayFor(modelItem => item.FirstTime)*@
+                    @(item.FirstTime?"Yes":"No")
+                </div>
+                <div class="guest-info my-actionLink" style="text-align: right; color: black;">
+                    @*Controls*@
+                    @Html.ActionLink("Edit", "Edit", new { id = item.GuestId }) |
+                    @Html.ActionLink("Guest Details", "Details", new { id = item.GuestId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.GuestId })
+                </div>
+            </div>
+        </div>
+
+    }
+</div>

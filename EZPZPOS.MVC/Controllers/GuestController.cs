@@ -18,7 +18,7 @@ namespace EZPZPOS.MVC.Controllers
         {
             var userId = User.Identity.GetUserId();
             var service = new GuestService(userId);
-            var model = service.GetGuests();
+            var model = service.GetGuests().OrderBy(g => g.LastName);
 
             return View(model);
         }
@@ -69,6 +69,7 @@ namespace EZPZPOS.MVC.Controllers
                     FirstName = detail.FirstName,
                     LastName= detail.LastName,
                     ContactNumber = detail.ContactNumber,
+                    FullAddress = detail.FullAddress,
                     Notes = detail.Notes,
                 };
             return View(model);

@@ -1,18 +1,20 @@
 ﻿@model IEnumerable<EZPZPOS.Models.OrderModels.OrderListItem>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Order Index";
 }
 
-<h2>Orders</h2>
+<h2 class="col-md-12" style="text-align: center; font-weight: bolder; color: white;">Orders</h2>
 
-<p>
+@*<p>
     @Html.ActionLink("Create A New Order", "Create")
-</p>
+</p>*@
+
+<p class="col-md-12" style="text-align: right; font-size: 16px;">@Html.ActionLink("Create A New Order", "Create", "Order", null, new { @class = "btn button-color" })</p>
 
 @if (TempData.ContainsKey("SaveResult"))
 {
-    <div class="alert alert-success fade in" role="alert">
+    <div class="alert alert-success fade in col-md-12" role="alert">
 
         <button type="button" class="close" data-dismiss="alert">
             <span>&times;</span>
@@ -21,14 +23,14 @@
     </div>
 }
 
-<table class="table">
-    <tr>
+<table class="table order-tableIndex table-striped table-hover table-bordered">
+    <tr style="font-size: 18px;">
         <th>
             @Html.DisplayNameFor(model => model.OrderId)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.GuestId)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.FirstName)
         </th>
@@ -41,12 +43,12 @@
         <th>
             @Html.DisplayNameFor(model => model.TypeOfOrder)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.MenuItemId)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Quantity)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Subtotal)
         </th>
@@ -62,12 +64,12 @@
     @foreach (var item in Model)
     {
 <tr>
-    <td>
+    <td  style="font-weight: bold; color: darkblue;">
         @Html.DisplayFor(modelItem => item.OrderId)
     </td>
-    <td>
+    @*<td>
         @Html.DisplayFor(modelItem => item.GuestId)
-    </td>
+    </td>*@
     <td>
         @Html.DisplayFor(modelItem => item.FirstName)
     </td>
@@ -80,12 +82,12 @@
     <td>
         @Html.DisplayFor(modelItem => item.TypeOfOrder)
     </td>
-    <td>
+    @*<td>
         @Html.DisplayFor(modelItem => item.MenuItemId)
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.Quantity)
-    </td>
+    </td>*@
     <td>
         @Html.DisplayFor(modelItem => item.Subtotal)
     </td>
@@ -95,7 +97,7 @@
     <td>
         @Html.DisplayFor(modelItem => item.GrandTotal)
     </td>
-    <td>
+    <td class="my-actionLinkTwo">
         @Html.ActionLink("Edit", "Edit", new { id = item.OrderId }) |
         @Html.ActionLink("Details", "Details", new { id = item.OrderId }) |
         @Html.ActionLink("Delete", "Delete", new { id = item.OrderId })
