@@ -204,7 +204,7 @@ namespace EZPZPOS.MVC.Controllers
             return RedirectToAction("Index");
         }
 
-        // Helper method for GuestId Dropdown to display with first and last name
+        // Helper method for GuestId Dropdown to display with Last and First name
         private List<SelectListItem> AccessGuestIdList()
         {
             var service = new GuestService(User.Identity.GetUserId());
@@ -212,7 +212,7 @@ namespace EZPZPOS.MVC.Controllers
             foreach (var guest in service.GetGuestByFullName().OrderBy(g => g.LastName))
                 guests.Add(
                     new SelectListItem { 
-                        Text = guest.FirstName + " " + guest.LastName, // Realize I have FullName but wanted to practice concatenation
+                        Text = guest.LastName + ", " + guest.FirstName, // Realize I have FullName but wanted to practice concatenation
                         Value = guest.GuestId.ToString() 
                     });
             return guests;

@@ -1,16 +1,16 @@
 ﻿@model EZPZPOS.Models.MenuItemModels.MenuItemDetail
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Delete Menu Item";
 }
 
-<h2>Delete Menu Item</h2>
+<h2 style="text-align: center; font-weight: bolder; color: white;">Delete Menu Item</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3 style="font-weight: bolder; color: white;">Are you sure you want to delete this menu item?</h3>
 <div>
-    <h4>MenuItemDetail</h4>
+    <h4 style="font-weight: bolder; color: white;">Menu Item Detail</h4>
     <hr />
-    <dl class="dl-horizontal">
+    <dl class="dl-horizontal" style="font-weight: bolder; color: white;">
         <dt>
             @Html.DisplayNameFor(model => model.MenuItemId)
         </dt>
@@ -65,8 +65,8 @@
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
+        <div class="form-actions no-color my-actionLink" style="color:white;">
+            <input type="submit" value="Delete" class="btn button-color" /> |
             @Html.ActionLink("Back to List", "Index")
         </div>
     }

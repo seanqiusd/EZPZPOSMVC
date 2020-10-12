@@ -1,15 +1,15 @@
 ﻿@model EZPZPOS.Models.OrderModels.OrderDetail
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Order Details";
 }
 
-<h2>Order Details</h2>
+<h2 style="text-align: center; font-weight: bolder; color: white;">Order Detail</h2>
 
 <div>
-    <h4>OrderDetail</h4>
+    @*<h4>OrderDetail</h4>*@
     <hr />
-    <dl class="dl-horizontal">
+    <dl class="dl-horizontal" style="font-weight: bolder; color: white;">
         <dt>
             @Html.DisplayNameFor(model => model.OrderId)
         </dt>
@@ -132,7 +132,7 @@
 
     </dl>
 </div>
-<p>
+<p class="my-actionLink" style="color: darkorange;">
     @Html.ActionLink("Edit Order", "Edit", new { id = Model.OrderId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

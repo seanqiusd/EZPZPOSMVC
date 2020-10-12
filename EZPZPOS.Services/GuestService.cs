@@ -20,7 +20,7 @@ namespace EZPZPOS.Services
             _userId = userId;
         }
 
-        //Trying this
+        // Helper Method for OrderController
         public IEnumerable<GuestListItem> GetGuestByFullName()
         {
             using (var ctx = new ApplicationDbContext())

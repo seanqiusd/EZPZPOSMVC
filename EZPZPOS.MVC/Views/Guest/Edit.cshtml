@@ -1,18 +1,18 @@
 ﻿@model EZPZPOS.Models.GuestModels.GuestEdit
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Edit Guest";
 }
 
-<h2>Edit Guest</h2>
+<h2 style="text-align: center; font-weight: bolder; color: white;">Edit Guest</h2>
 
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
-<div class="form-horizontal">
-    <h4>GuestEdit</h4>
+<div class="form-horizontal" style="font-weight: bolder; color: white;">
+    @*<h4>GuestEdit</h4>*@
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(model => model.GuestId)
@@ -59,13 +59,13 @@
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Save" class="btn btn-default" />
+            <input type="submit" value="Save" class="btn button-color" />
         </div>
     </div>
 </div>
 }
 
-<div>
+<div class="my-actionLink">
     @Html.ActionLink("Back to List", "Index")
 </div>
 

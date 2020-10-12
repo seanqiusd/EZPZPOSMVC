@@ -73,6 +73,11 @@ namespace EZPZPOS.Services
                     item.IsAvailable = true; // Trying this
                 else
                     item.IsAvailable = false;
+                
+                // Updating guests so that after first order they're no longer first time
+                //var guest = ctx.Guests.Single(g => g.GuestId == model.GuestId);
+                //if (guest.FirstTime)
+                //    guest.FirstTime = false;
 
                 ctx.Orders.Add(entity);
                 return ctx.SaveChanges() == 2;

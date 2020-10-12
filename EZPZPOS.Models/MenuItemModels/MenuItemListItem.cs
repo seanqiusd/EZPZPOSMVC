@@ -19,6 +19,7 @@ namespace EZPZPOS.Models.MenuItemModels
 
         public decimal Price { get; set; }
 
+        [Display(Name = "Is Available")]
         public bool IsAvailable { get; set; }
 
     }
