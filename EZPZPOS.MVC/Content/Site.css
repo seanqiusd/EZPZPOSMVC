@@ -71,6 +71,7 @@ textarea {
     box-shadow: 20px 10px 8px #000000;
     object-fit: contain;
     color: ghostwhite;
+    margin-top: 20px;
 }
 
 /*Buttons in jumbotron styling*/
