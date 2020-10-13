@@ -236,7 +236,7 @@ guest-container {
 /*Menu Item Index Styling*/
 #menu-itemIndex {
     background-color: rgba(0, 0, 0, 0.6);
-    border-radius: .5rem;
+    border-radius: 0.5rem;
 }
 
 
@@ -244,5 +244,5 @@ guest-container {
 /*Order Index*/
 .order-tableIndex {
     /*background-image: url('assets/seamlesscork.jpg');*/
-    background-color: darkorange;
+    background-color: orange;
 }
