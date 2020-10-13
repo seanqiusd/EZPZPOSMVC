@@ -1,7 +1,7 @@
 ﻿@model EZPZPOS.MVC.Models.ExternalLoginListViewModel
 @using Microsoft.Owin.Security
 
-<h4 style="color:white;">Use another service to log in.</h4>
+@*<h4 style="color:white;">Use another service to log in.</h4> When I want to incorporate other signins come here
 <hr />
 @{
     var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
@@ -25,4 +25,4 @@
             </div>
         }
     }
-}
+}*@
