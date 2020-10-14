@@ -19,7 +19,7 @@ namespace EZPZPOS.Services
             _userId = userId;
         }
 
-        // Trying this
+        // Helper method for helper in OrderController
         public IEnumerable<MenuItemListItem> GetMenuItemList()
         {
             using (var ctx = new ApplicationDbContext())
