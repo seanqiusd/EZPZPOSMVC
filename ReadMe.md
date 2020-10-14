@@ -14,7 +14,8 @@ Visual Studio Community 2019 is a free software program provided to you through 
 > 3. Once Extracted, find the file titled "EZPZPOS". 
 > 4. Then double click on the solution file called "EZPZPOS.sln".
 > 5. My assemblies for this application automatically open in VS Community 2019, assuming you have that downloaded already.
-
+>-----------------------------------------------------------------------------------------------------
+>-----------------------------------------------------------------------------------------------------
 
 > [!IMPORTANT]
 > How To Run EZPZPOS ASP.Net MVC Application
@@ -48,8 +49,8 @@ Visual Studio Community 2019 is a free software program provided to you through 
 3. It was my objective to create a more intuitive, simplified point of sales application for restaurant owners and employees to track customers, orders, pricings, and transactions. I believe I've mostly done that. There's limitations like I've mentioned, but I'm working out those bugs. I've also got a whole list of other stretch goals now that I have a better understanding of how some relationships between data classes and models work. 
 
 ## Let's Connect
-> If you've got any questions, please email me: seanqiusoftdev@gmail.com. 
-> Connect with me on LinkedIn: https://www.linkedin.com/in/sean-q-6437b7a3/
+* If you've got any questions, please email me: seanqiusoftdev@gmail.com. 
+* Connect with me on LinkedIn: https://www.linkedin.com/in/sean-q-6437b7a3/
 
 ## People I'd Like To Thank
 > Without the following people, I don't know where I'd be. Thank you. Please connect with these amazing souls if you'd like. 
