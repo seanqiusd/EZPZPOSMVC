@@ -24,7 +24,7 @@ Visual Studio Community 2019 is a free software program provided to you through 
 > 2. Then go to the green Start button at the top of your screen and select start, to launch the application. 
 > 3. Assuming you have Google Chrome Web Browser installed as your default browser, a local host uri should load once you've hit the start button. If not, please switch over to Google Chrome or download google chrome by doing a simple search for Google Chrome Web Browser that is compatible with your system. Here's the link to download Google Chrome: https://www.google.com/chrome/. Microsoft Edge also works, too. If you'd like to use that, here's the link to download: https://www.microsoft.com/en-us/edge. Lastly, have fun!
 > 4. After you get the local host uri running, make sure to register as a new user. "Then just follow the steps that are on the home page to get the full experience out of my application. Lastly, have fun!
-> 5. If you're a web-developer or potential client who would like to just look at the front-end instead of sifting through my code, please follow this link: https://ezpzposmvc.azurewebsites.net/MenuItem.
+> 5. If you're a web-developer or potential client who would like to just look at the front-end instead of sifting through my code, please follow this link: https://ezpzposmvc.azurewebsites.net/.
 >-----------------------------------------------------------------------------------------------------
 >-----------------------------------------------------------------------------------------------------
 
