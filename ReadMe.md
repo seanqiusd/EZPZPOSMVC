@@ -27,6 +27,8 @@ Visual Studio Community 2019 is a free software program provided to you through 
 > 5. If you're a web-developer or potential client who would like to just look at the front-end instead of sifting through my code, please follow this link: https://ezpzposmvc.azurewebsites.net/.
 >-----------------------------------------------------------------------------------------------------
 >-----------------------------------------------------------------------------------------------------
+## A Note To Users, Especially The Ones Code Diving
+When I designed the front end, I made a conscious choice to format it as the front end of a fictitious store so that potential clients could get a feel for what a more finished product would/could look like, instead of just having a manual-esque feel for my application. I've incorporated minimal directions on the home page of the application to help in the ease of use if it's not already intuitive. If you've downloaded my code, then I'll trust you'll likely know where to go to change the title of major headings in my project to better accomodate your vision. If you also know how to manipulate the styling I've incorporated for this fictitious store, then please be my guest and change it to what fits your needs. 
 
 ## What To Expect and Limitations
 1. You should be able to register an account for yourself. 
