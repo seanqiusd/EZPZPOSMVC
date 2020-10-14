@@ -61,3 +61,6 @@ Visual Studio Community 2019 is a free software program provided to you through 
 * https://www.linkedin.com/in/slayde-settle-b9547769/
 * https://www.linkedin.com/in/mitchell-reed-7923a9aa/
 * https://www.linkedin.com/in/jacob-brown-841b23179/
+
+## Here's A Screenshot Of The Front End Of EZPZPOS
+![](EZPZPOSAzureScreenShot.jpg)
